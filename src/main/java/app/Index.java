@@ -119,7 +119,7 @@ public class Index implements Handler {
             
 
              "<div class='text-block-2'>"+
-             "<p>Over 1,000 Australians will have to sleepe on the streets tonight, without any proper shelter, food or safety</p>"+
+             "<p>Over 1,000 Australians will have to sssleepe on the streets tonight, without any proper shelter, food or safety</p>"+
            "</div>"+
              
              
