@@ -15,12 +15,12 @@ import io.javalin.core.util.RouteOverviewPlugin;
  */
 public class App {
 
-    public static final int         JAVALIN_PORT    = 7000;
+    public static final int         JAVALIN_PORT    = 700;
     public static final String      CSS_DIR         = "css/";
     public static final String      IMAGES_DIR      = "images/";
 
     public static void main(String[] args) {
-        // Create our HTTP server and listen in port 7000
+        // Create our HTTP server and listen in port 700
         Javalin app = Javalin.create(config -> {
             config.registerPlugin(new RouteOverviewPlugin("/help/routes"));
             

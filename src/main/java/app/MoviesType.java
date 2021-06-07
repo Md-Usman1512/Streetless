@@ -31,9 +31,93 @@ public class MoviesType implements Handler {
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
 
-        // Add the body
-        html = html + "<body>";
 
+
+        html = html + "<head>";
+        html = html +  "<meta charset='UTF-8' />"+
+          "<meta name='viewport' content='width=device-width, initial-scale=1.0' />"+
+          "<meta http-equiv='X-UA-Compatible' content='ie=edge' />"+
+          "<title>Streetlesss</title>"+
+
+          "<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'/>"+
+          "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>";
+
+
+          // Add the body
+   html = html + "<body>";
+
+   html = html + "<div class='container-fluid p-0'>"+
+   "<nav class='navbar navbar-expand-lg'>"+
+     "<a class='navbar-brand' href='#'>"+
+      
+     "<div class='logo'>"+ "<p style='font-size:44px'> STREETLESS</p></a>"+ "</div>"+
+     "<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>" +
+       "<i class='fas fa-align-right text-light'>" + "</i>"+
+     "</button>"+
+     "<div class='collapse navbar-collapse' id='navbarNav'>"+
+       "<div class='mr-auto'>" + "</div>"+
+       "<ul class='navbar-nav'>"+
+       " <li class='nav-item active'>"+
+       "   <a class='nav-link' href='#'>"+ "<h6></h6>"+
+       "     <span class='sr-only'> </span>"+
+       "   </a>"+
+       " </li>"+
+       "<p class='nav-item'>"+
+
+       "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6></h6>"+"</a>"+
+
+       "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>HOME</h6>"+"</a>"+
+
+       "<li class='nav-item dropdown'>"+
+       "<div class='dropdown'>"+
+       "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6>REPORTS&DATA</h6></a>"+
+
+       "<div class='dropdown-content'>"+
+       "      <a href='#'>Detailed reports</a>"+
+       "      <a href='#'>In-depth reports</a>"+
+       "    </div>"+
+       "  </div>"+
+       "</li>"+
+      
+       "  <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "<h6>MEIDA</h6>"+"</a>"+ "</a>"+
+
+        "   <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>ABOUT</h6>"+"</a>"+
+       
+        "  <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>CONTACT</h6>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
+
+        
+       
+
+       
+        
+        
+        "<p class='nav-item'>"+
+
+        "<div class='topnav'>"+
+        "<br>"+
+        "<div class='input-group'>"+
+        "<input type='text' class='form-control bg-dark text-white' id='inlineFormInputGroupUsername2' placeholder='Search..'>"+
+        "<div class='input-group-prepend'>"+
+"</p>"+
+"</p>"+
+        "</ul>"+
+        "</div>"+
+        "</nav>"+
+        "</div>";
+
+        html = html + "<a href='#'>Home > </a>"+
+        "<a href='#'>  Reports & Data </a>";
+   // Add HTML for the movies list
+
+html = html + "<h3> Reports and data of homeless by region </h3>"; 
+
+
+
+
+
+
+
+        
         // Add HTML for the movies list
         html = html + "<h1>Movies by Type</h1>";
 
@@ -51,6 +135,9 @@ public class MoviesType implements Handler {
         html = html + "      <label for='movietype_drop'>Select the type Movie Type (Dropdown):</label>";
         html = html + "      <select id='movietype_drop' name='movietype_drop'>";
         html = html + "         <option>HORROR</option>";
+        html = html + "         <option>Com</option>";
+        html = html + "         <option>d</option>";
+
         html = html + "      </select>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
@@ -88,6 +175,73 @@ public class MoviesType implements Handler {
         html = html + "<a href='/'>Link to Homepage</a>";
         html = html + "</p>";
 
+
+
+
+       html = html + "<h2>HTML Table</h2>"+
+
+        "<table>"+
+          "<tr>"+
+            "<th>Local Government Area, State</th>"+
+            "<th>People at risk of being homeless</th>"+
+            "<th>Meidan Age</th>"+
+            "<th> Gender </th>"+
+
+          "</tr>"+
+          "<tr>"+
+            "<td>Germany</td>"+
+            "<td>100000</td>"+
+            "<td>11</td>"+
+            "<td>Female</td>"+
+
+
+
+          "</tr>"+
+          "<tr>"+
+            "<td>Centro comercial Moctezuma</td>"+
+            "<td> Mexico</td>"+
+            "<td> 50 </td>"+
+            "<td> Male</td>"+
+
+
+            
+          "</tr>"+
+          "<tr>"+
+            "<td>Roland Mendel</td>"+
+          "</tr>"+
+          "<tr>"+
+            "<td>+Island Trading</td>"+
+          "</tr>"+
+          "<tr>"+
+            "<td>+Laughing Bacchus Winecellars</td>"+
+            "<td>Canada </td>"+
+          "</tr>"+
+          "<tr>"+
+            "<td+Magazzini Alimentari Riuniti</td>"+
+            "<td> Giovanni Rovelli</td>"+
+            "<td> Italy</td>"+
+          "</tr>"+
+        "</table>";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // Finish the HTML webpage
         html = html + "</body>" + "</html>";
 
@@ -115,3 +269,20 @@ public class MoviesType implements Handler {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

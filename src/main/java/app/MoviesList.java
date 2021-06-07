@@ -16,7 +16,7 @@ import io.javalin.http.Handler;
  */
 public class MoviesList implements Handler {
 
-    // URL of this page relative to http://localhost:7000/
+    // URL of this page relative to http://localhost:700/
     public static final String URL = "/movies.html";
 
     @Override
