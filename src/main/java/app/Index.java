@@ -112,7 +112,7 @@ public class Index implements Handler {
              "<img src= 'hoom.png' alt='Norway' align= 'right' width='1440' height='800'>"+
              "<div class='text-block'>"+
 
-               "<p>Over 116,000 Australians will have to sleep on the streets tonight, without any proper shelter, food or safety</p>"+
+               "<p>6,000 Australians will have to sleep on the streets tonight, without any proper shelter, food Over 11or safety</p>"+
                              
              "</div>"+
              "</div>"+
