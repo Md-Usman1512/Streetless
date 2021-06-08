@@ -135,7 +135,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "      <label for='movietype_drop'>Select the type Movie Type (Dropdown):</label>";
         html = html + "      <select id='movietype_drop' name='movietype_drop'>";
         html = html + "         <option>HORROR</option>";
-        html = html + "         <option>Com</option>";
+        html = html + "         <option>COMEDY</option>";
         html = html + "         <option>d</option>";
 
         html = html + "      </select>";

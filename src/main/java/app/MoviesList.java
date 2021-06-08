@@ -53,7 +53,7 @@ public class MoviesList implements Handler {
         html = html + "</ul>";
 
         // Add HTML for link back to the homepage
-        html = html + "<p>Return to the Homepage: ";
+        html = html + "<p>Return to  Homepage: ";
         html = html + "<a href='/'>Link to Homepage</a>";
         html = html + "</p>";
 
