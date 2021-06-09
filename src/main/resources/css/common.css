@@ -203,7 +203,7 @@ header .container .col-md-7 p {
 
 .numbers .rect {
   position: relative;
-  padding-top: 0vmin;
+  padding-top: 70vmin;
   z-index: 1;
   background: rgb(15, 214, 98);
   width: 17rem;
@@ -217,10 +217,11 @@ header .container .col-md-7 p {
 .numbers {
   margin-top: -444;
   padding-top: 3;
-
+z-index: 1;
 }
 
 .numbers .rect h1 {
+  z-index: -1;
   padding-top: 2;
   font-size: 5rem;
   color: tomato;
@@ -398,8 +399,9 @@ footer .column i + i {
 }
 
 
-.container {
+.containers {
 	position: relative;
+
   }
   
   /* Bottom right text */

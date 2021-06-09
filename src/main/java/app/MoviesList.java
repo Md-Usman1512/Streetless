@@ -39,7 +39,7 @@ public class MoviesList implements Handler {
         JDBCConnection jdbc = new JDBCConnection();
 
         // Next we will ask this *class* for the movies
-        ArrayList<String> movies = jdbc.getMovies();
+        ArrayList<String> movies = jdbc.getLga();
 
         // Add HTML for the movies list
         html = html + "<h1>Movies</h1>" + "<ul>";

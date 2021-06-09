@@ -18,7 +18,7 @@ import java.sql.Statement;
 public class JDBCConnection {
 
     // Name of database file (contained in database folder)
-    private static final String DATABASE = "jdbc:sqlite:database/Movies.db";
+    private static final String DATABASE = "jdbc:sqlite:database/Homeless.db";
 
     public JDBCConnection() {
         System.out.println("Created JDBC Connection Object");
@@ -27,8 +27,8 @@ public class JDBCConnection {
     /**
      * Get all of the Movies in the database
      */
-    public ArrayList<String> getMovies() {
-        ArrayList<String> movies = new ArrayList<String>();
+    public ArrayList<String> getLga() {
+        ArrayList<String> lga = new ArrayList<String>();
 
         // Setup the variable for the JDBC connection
         Connection connection = null;
@@ -42,7 +42,7 @@ public class JDBCConnection {
             statement.setQueryTimeout(30);
 
             // The Query
-            String query = "SELECT * FROM movie";
+            String query = "SELECT * FROM lga";
             
             // Get Result
             ResultSet results = statement.executeQuery(query);
@@ -58,9 +58,10 @@ public class JDBCConnection {
                 String movieName     = results.getString("mvtitle");
                 int year            = results.getInt("yrmde");
                 String type         = results.getString("mvtype");
+                String name = results.getString("lga_name");
 
                 // For now we will just store the movieName and ignore the id
-                movies.add(movieName);
+                lga.add(movieName);
             }
 
             // Close the statement because we are done with it
@@ -81,7 +82,7 @@ public class JDBCConnection {
         }
 
         // Finally we return all of the movies
-        return movies;
+        return lga;
     }
 
         
@@ -113,8 +114,8 @@ public class JDBCConnection {
      * This has been implemented for you as an example.
      * HINT: you can use this to find all of the horror movies!
      */
-    public ArrayList<String> getMoviesByType(String movieType) {
-        ArrayList<String> movies = new ArrayList<String>();
+    public ArrayList<String> getLgaBypop(String lgaType) {
+        ArrayList<String> lga = new ArrayList<String>();
 
         // Setup the variable for the JDBC connection
         Connection connection = null;
@@ -128,7 +129,7 @@ public class JDBCConnection {
             statement.setQueryTimeout(30);
 
             // The Query
-            String query = "SELECT * FROM movie WHERE mvtype = '" + movieType + "'";
+            String query = "SELECT * FROM lga WHERE population = '" + lgaType + "'";
             System.out.println(query);
             
             // Get Result
@@ -136,8 +137,8 @@ public class JDBCConnection {
 
             // Process all of the results
             while (results.next()) {
-                String movieName     = results.getString("mvtitle");
-                movies.add(movieName);
+                String lgaName     = results.getString("lga_name");
+                lga.add(lgaName);
             }
 
             // Close the statement because we are done with it
@@ -158,7 +159,7 @@ public class JDBCConnection {
         }
 
         // Finally we return all of the movies
-        return movies;
+        return lga;
     }
 
     // TODO: Keep adding more methods here to answer all of the questions from the Studio Class activities

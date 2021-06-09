@@ -14,7 +14,7 @@ import io.javalin.http.Handler;
  * @author Timothy Wiley, 2021. email: timothy.wiley@rmit.edu.au
  * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
  */
-public class MoviesType implements Handler {
+public class hompopulation implements Handler {
 
     // URL of this page relative to http://localhost:7000/
     public static final String URL = "/moviestype.html";
@@ -66,7 +66,7 @@ public class MoviesType implements Handler {
 
        "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6></h6>"+"</a>"+
 
-       "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>HOME</h6>"+"</a>"+
+       "   <a class='nav-link' href='http://localhost:7000/'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>HOME</h6>"+"</a>"+
 
        "<li class='nav-item dropdown'>"+
        "<div class='dropdown'>"+
@@ -105,7 +105,7 @@ public class MoviesType implements Handler {
         "</nav>"+
         "</div>";
 
-        html = html + "<a href='#'>Home > </a>"+
+        html = html + "<a href='http://localhost:7000/'>Home > </a>"+
         "<a href='#'>  Reports & Data </a>";
    // Add HTML for the movies list
 
@@ -134,7 +134,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='movietype_drop'>Select the type Movie Type (Dropdown):</label>";
         html = html + "      <select id='movietype_drop' name='movietype_drop'>";
-        html = html + "         <option>HORROR</option>";
+        html = html + "         <option>12</option>";
         html = html + "         <option>COMEDY</option>";
         html = html + "         <option>d</option>";
 
@@ -256,11 +256,11 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
         // Look up movies from JDBC
         JDBCConnection jdbc = new JDBCConnection();
-        ArrayList<String> movies = jdbc.getMoviesByType(type);
+        ArrayList<String> lga = jdbc.getLgaBypop(type);
         
         // Add HTML for the movies list
         html = html + "<ul>";
-        for (String movie : movies) {
+        for (String movie : lga) {
             html = html + "<li>" + movie + "</li>";
         }
         html = html + "</ul>";

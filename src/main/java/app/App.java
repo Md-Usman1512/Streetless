@@ -15,7 +15,7 @@ import io.javalin.core.util.RouteOverviewPlugin;
  */
 public class App {
 
-    public static final int         JAVALIN_PORT    = 700;
+    public static final int         JAVALIN_PORT    = 7000;
     public static final String      CSS_DIR         = "css/";
     public static final String      IMAGES_DIR      = "images/";
 
@@ -42,10 +42,10 @@ public class App {
         // ADD ALL OF YOUR WEBPAGES HERE
         app.get(Index.URL, new Index());
         app.get(MoviesList.URL, new MoviesList());      
-        app.get(MoviesType.URL, new MoviesType());
+        app.get(hompopulation.URL, new hompopulation());
 
         // POST pages can accept form data
-        app.post(MoviesType.URL, new MoviesType());
+        app.post(hompopulation.URL, new hompopulation());
     }
 
 }

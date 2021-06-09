@@ -68,7 +68,7 @@ public class Index implements Handler {
 
             "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h4></h4>"+"</a>"+
 
-            "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h4>HOME</h4>"+"</a>"+
+            "   <a class='nav-link' href='http://localhost:7000/'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h4>HOME</h4>"+"</a>"+
 
             "<li class='nav-item dropdown'>"+
             "<div class='dropdown'>"+
