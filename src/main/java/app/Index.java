@@ -142,30 +142,38 @@ public class Index implements Handler {
        
        "</div>"+
        "</div>"+
+       "</div>"+
 
  "  <div class='container-fluid text-center'>"+
  "   <div class='numbers d-flex flex-md-row flex-wrap justify-content-center'>"+
  "     <div class='rect'>"+
                  "    <h1>6784</h1>"+
                  "   <p>Are at risk of being homeless</p>"+
-                 " </div>"+
-                 " <div class='rect'>"+
-                   " <h1>1056</h1>"+
+                 "  <div class='container-fluid text-center'>"+
+                 "   <div class='numbers d-flex flex-md-row flex-wrap justify-content-center'>"+
+                 " <div class='rect2'>"+
+                   " <h1>102256</h1>"+
                  " <p>Homeless identify as Aboriginal</p>"+
                  "</div>"+
-                 " <div class='rect'>"+
-                 " <h1>1056</h1>"+
-                 " <p>Homeless identify as Aboriginal</p>"+
                  "</div>"+
-                 "<div class='rect'>"+
+
+                 "<div class='rect3'>"+
                  " <h1>9152</h1>"+
                  " <p>Homeless are under the age of 15</p>"+
                  "</div>"+
                  "</div>"+
                  "</div>"+
-       
-       "<br>"+       "<br>"+
-       "<br>"+
+
+                 "</div>"+
+                 "</div>"+
+                 "</div>"+
+
+                 "<br>"+       "<br>"+
+                 "<br>"+       "<br>"+
+                 "<br>"+       "<br>"+
+                 "<br>"+       "<br>"+       "<br>"+
+                 "<br>"+       "<br>"+
+
 
                  " <div class='Explore text-center'>";
                
@@ -202,7 +210,7 @@ public class Index implements Handler {
                        "</div>"+
                        "<div class='pricing'>"+
                          "<h5>Explore the issue of homelessness in more detail by finding the numbers  regions</h5>"+
-                         "<a href='http://localhost:700/moviestype.html' class='btn btn-dark px-5 py-2 primary-btn mb-5'>Explore Now</a>"+
+                         "<a href='http://localhost:7000/moviestype.html' class='btn btn-dark px-5 py-2 primary-btn mb-5'>Explore Now</a>"+
                        "</div>"+
                      "</div>"+
                    "</div>"+
