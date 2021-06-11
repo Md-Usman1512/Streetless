@@ -75,7 +75,7 @@ public class Index implements Handler {
             "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4>REPORTS&DATA</h4></a>"+
 
             "<div class='dropdown-content'>"+
-            "      <a href='http://localhost:700/moviestype.html'>Detailed reports</a>"+
+            "      <a href='http://localhost:7000/moviestype.html'>Detailed reports</a>"+
             "      <a href='#'>In-depth reports</a>"+
             "    </div>"+
             "  </div>"+
@@ -85,7 +85,7 @@ public class Index implements Handler {
 
              "   <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h4>ABOUT</h4>"+"</a>"+
             
-             "  <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h4>CONTACT</h4>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
+             "  <a class='nav-link' href='http://localhost:7000/contact'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h4>CONTACT</h4>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
 
              
             
@@ -109,7 +109,7 @@ public class Index implements Handler {
 
 
              html = html + "<div class='containers'>"+
-             "<img src= 'hoom.png' alt='Norway' align= 'right' width='1440' height='800'>"+
+             "<img src= 'hoom.png' alt='Norway' align= 'right' width='1440' height='600'>"+
              "<div class='text-block'>"+
 
                "<p>6,000 Aweustrsalians will have to sleep on the streets tonight, without any proper shelter, food Over 11or safety</p>"+
@@ -247,22 +247,7 @@ html = html +
 
 
   "</div>"+
-"<div class='col-md-5 col-sm-12'>"+
-"<h4 class='text-light'> Newsletter </h4>"+
-"<p class='text-muted'> Stay Updated </p>"+
-"<form class='form-inline'>"+
-"<div class='col pl-0'>"+
-  "<div class='input-group pr-5'>"+
-    "<input type='text' class='form-control bg-dark text-white' id='inlineFormInputGroupUsername2' placeholder='Email'>"+
-    "<div class='input-group-prepend'>"+
-      "<div class='input-group-text'>"+
-        "<i class='fas fa-arrow-right'> </i>"+
-      "</div>"+
-    "</div>"+
-  "</div>"+
-"</div>"+
-"</form>"+
-"</div>"+
+
 
 "<div class='col-md-2 col-sm-12'>"+
 "<h4 class='text-light'> Follow Us </h4>"+

@@ -41,7 +41,9 @@ public class App {
         
         // ADD ALL OF YOUR WEBPAGES HERE
         app.get(Index.URL, new Index());
-        app.get(MoviesList.URL, new MoviesList());      
+        app.get(MoviesList.URL, new MoviesList()); 
+        app.get(contact.URL, new contact());      
+     
         app.get(hompopulation.URL, new hompopulation());
 
         // POST pages can accept form data

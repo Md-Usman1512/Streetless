@@ -14,7 +14,7 @@ import io.javalin.http.Handler;
  * @author Timothy Wiley, 2021. email: timothy.wiley@rmit.edu.au
  * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
  */
-public class hompopulation implements Handler {
+public class MoviesType implements Handler {
 
     // URL of this page relative to http://localhost:7000/
     public static final String URL = "/moviestype.html";
@@ -119,7 +119,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
         
         // Add HTML for the movies list
-        html = html + "<h1>Homeless</h1>";
+        html = html + "<h1>Movies by Type</h1>";
 
         /* Add HTML for the web form
          * We are giving two ways here
@@ -132,46 +132,19 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
          */
         html = html + "<form action='/moviestype.html' method='post'>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='movietype_drop'>Select the region (Dropdown):</label>";
+        html = html + "      <label for='movietype_drop'>Select the type Movie Type (Dropdown):</label>";
         html = html + "      <select id='movietype_drop' name='movietype_drop'>";
-        html = html + "         <option>10050 (NSW)</option>";
+        html = html + "         <option>HORROR</option>";
         html = html + "         <option>COMEDY</option>";
         html = html + "         <option>d</option>";
+
         html = html + "      </select>";
-
-        html = html + "<form action='/moviestype.html' method='post'>";
-        html = html + "   <div class='form-group'>";
-        html = html + "      <label for='movietype_drop'>Select the Age (Dropdown):</label>";
-        html = html + "      <select id='movietype_drop' name='movietype_drop'>";
-        html = html + "         <option> All</option>";
-        html = html + "         <option>0-9</option>";
-        html = html + "         <option>10-19</option>";
-        html = html + "         <option>20-29</option>";
-        html = html + "         <option>30-39</option>";
-        html = html + "         <option>40-49</option>";
-        html = html + "         <option>50-59</option>";
-        html = html + "         <option>60+</option>";
-
-        html = html + "      </select>"+
-
-        "<form action='/moviestype.html'>"+
-        "<h5>SelectGender</h5>"+
-        "<input type='radio' id='male' name='gender' value='male'>" +
-        "<label for='male'>Male" +
-      
-        "<form action='/'>"+
-        "<input type='radio' id='female' name='gender' value='Female'>" +
-        "<label for='female'>Female" +" <br>";
-
-
-
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='movietype_textbox'>OR Enter the LGA/State(Textbox)</label>";
+        html = html + "      <label for='movietype_textbox'>Select the type Movie Type (Textbox)</label>";
         html = html + "      <input class='form-control' id='movietype_textbox' name='movietype_textbox'>";
         html = html + "   </div>";
         html = html + "   <button type='submit' class='btn btn-primary'>Submit</button>";
-        html = html + "</form>";
         html = html + "</form>";
 
         /* Get the Form Data
@@ -201,7 +174,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "<p>Return to Homepage: ";
         html = html + "<a href='/'>Link to Homepage</a>";
         html = html + "</p>";
-       
+
 
 
 
@@ -251,6 +224,24 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         "</table>";
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // Finish the HTML webpage
         html = html + "</body>" + "</html>";
 
@@ -259,18 +250,18 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         context.html(html);
     }
 
-    public String outputMovies(String status) {
+    public String outputMovies(String type) {
         String html = "";
-        html = html + "<h2> Homeless in "  + status + "</h2>";
+        html = html + "<h2>" + type + " Movies</h2>";
 
         // Look up movies from JDBC
         JDBCConnection jdbc = new JDBCConnection();
-        ArrayList<String> lga = jdbc.getLgaBypop(status);
+        ArrayList<String> movies = jdbc.getLgaBypop(type);
         
         // Add HTML for the movies list
         html = html + "<ul>";
-        for (String movie : lga) {
-            html = html + "<li>" + movie + "</li>";
+        for (String lga : movies) {
+            html = html + "<li>" + lga + "</li>";
         }
         html = html + "</ul>";
 
