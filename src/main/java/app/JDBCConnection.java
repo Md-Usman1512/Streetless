@@ -55,13 +55,14 @@ public class JDBCConnection {
                 // result using the column name
                 // BUT, we must be careful of the column type!
                 int id              = results.getInt("mvnumb");
-                String movieName     = results.getString("mvtitle");
-                int year            = results.getInt("yrmde");
-                String age         = results.getString("age");
+                String gender     = results.getString("gender");
+                int year            = results.getInt("year");
+                String agegroup         = results.getString("age");
                 String code = results.getString("lga_code");
 
                 // For now we will just store the movieName and ignore the id
                 lga.add(code);
+                lga.add(agegroup);
             }
 
             // Close the statement because we are done with it
@@ -129,7 +130,7 @@ public class JDBCConnection {
             statement.setQueryTimeout(30);
 
             // The Query
-            String query = "SELECT * FROM Homeles WHERE lga_code = 10050 AND Gender ='Female' AND Age = '0-9'";
+            String query = "SELECT * FROM Homeles WHERE status = 'at-risk' AND lga_code  = '" + lgaType + "'";
             
         
             System.out.println(query);
@@ -143,14 +144,11 @@ public class JDBCConnection {
                 lga.add(code );
                 String lgacount     = results.getString("count");
                 lga.add(lgacount);
-                String Gender     = results.getString("Gender");
-                lga.add(Gender);
-                String age     = results.getString("Age");
-                lga.add(age);
+                String status     = results.getString("status");
+                lga.add(status);
               
-              
+          
             }
-      
             // Close the statement because we are done with it
             statement.close();
         } catch (SQLException e) {
@@ -172,5 +170,69 @@ public class JDBCConnection {
         return lga;
     }
 
+    
     // TODO: Keep adding more methods here to answer all of the questions from the Studio Class activities
+
+
+
+
+
+    public ArrayList<String> getLgaByage(String ageType) {
+        ArrayList<String> lga = new ArrayList<String>();
+
+        // Setup the variable for the JDBC connection
+        Connection connection = null;
+
+        try {
+            // Connect to JDBC data base
+            connection = DriverManager.getConnection(DATABASE);
+
+            // Prepare a new SQL Query & Set a timeout
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            // The Query
+            String query = "SELECT * FROM Homeles WHERE age  = '" + ageType + "'";
+            
+        
+            System.out.println(query);
+            
+            // Get Result
+            ResultSet results = statement.executeQuery(query);
+
+            // Process all of the results
+            while (results.next()) {
+                String code     = results.getString("lga_code");
+                lga.add(code );
+              
+                String getage     = results.getString("age");
+                lga.add(getage);
+              
+              
+            }
+      
+            
+
+
+            // Close the statement because we are done with it
+            statement.close();
+        } catch (SQLException e) {
+            // If there is an error, lets just pring the error
+            System.err.println(e.getMessage());
+        } finally {
+            // Safety code to cleanup
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                // connection close failed.
+                System.err.println(e.getMessage());
+            }
+        }
+
+        // Finally we return all of the movies
+        return lga;
+    }
+
 }

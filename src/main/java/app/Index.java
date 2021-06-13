@@ -112,21 +112,23 @@ public class Index implements Handler {
              "<img src= 'hoom.png' alt='Norway' align= 'right' width='1440' height='600'>"+
              "<div class='text-block'>"+
 
-               "<p>6,000 Aweustrsalians will have to sleep on the streets tonight, without any proper shelter, food Over 11or safety</p>"+
+               "<p>Australians between the ages of 25 and 34 represent the highest homelessness population, making up almost 20% of all homeless people in Australia</p>"+
                              
              "</div>"+
              "</div>"+
             
+             "<div class='text-block-3'>"+
+             "<p>Despite making up only 3.3% of the nation's poulation Aboriginal and Torres Strait Islanders represent 20% of the homelessness population, with 7 in every 10 aboriginal and Torres Streit Islanders having experienced homelessness</p>"+
+           "</div>"+
 
+           
              "<div class='text-block-2'>"+
-             "<p>Over 1,000 Australians will have to sssleepe on the streets tonight, without any proper shelter, food or safety</p>"+
+             "<p>  Over 1,000 Australians will have to sleep on the streets tonight, without any proper shelter, food or safety</p>"+
            "</div>"+
              
-             
+         
 
-           "<div class='text-block-3'>"+
-           "<p>Over 1,000 Australians will have to sleep on the streets tonight, without any proper shelter, food or safety</p>"+
-         "</div>"+
+         
 
          "<div class='text-block-4'>"+
 

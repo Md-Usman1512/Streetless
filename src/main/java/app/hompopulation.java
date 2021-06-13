@@ -10,9 +10,7 @@ import io.javalin.http.Handler;
  * <p>
  * Generate a static HTML page using Javalin
  * by writing the raw HTML into a Java String object
- *
- * @author Timothy Wiley, 2021. email: timothy.wiley@rmit.edu.au
- * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
+ 
  */
 public class hompopulation implements Handler {
 
@@ -134,16 +132,15 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='movietype_drop'>Select the region (Dropdown):</label>";
         html = html + "      <select id='movietype_drop' name='movietype_drop'>";
-        html = html + "         <option>10050 (NSW)</option>";
-        html = html + "         <option>COMEDY</option>";
+        html = html + "         <option>10050</option>";
+        html = html + "         <option>10300</option>";
         html = html + "         <option>d</option>";
         html = html + "      </select>";
 
         html = html + "<form action='/moviestype.html' method='post'>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='movietype_drop'>Select the Age (Dropdown):</label>";
-        html = html + "      <select id='movietype_drop' name='movietype_drop'>";
-        html = html + "         <option> All</option>";
+        html = html + "      <label for='age_drop'>Select the Age (Dropdown):</label>";
+        html = html + "      <select id='age_drop' name='age_drop'>";
         html = html + "         <option>0-9</option>";
         html = html + "         <option>10-19</option>";
         html = html + "         <option>20-29</option>";
@@ -196,6 +193,19 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
             // If NOT NULL, then lookup the movie by type!
             html = html + outputMovies(movietype_textbox);
         }
+
+
+        String age_drop = context.formParam("age_drop");
+        if (movietype_drop == null) {
+            // If NULL, nothing to show, therefore we make some "no results" HTML
+            html = html + "<h2><i>No resss to show for dropbox</i></h2>";
+        } else {
+            // If NOT NULL, then lookup the movie by type!
+            html = html + output(age_drop);
+        }
+
+      
+
 
         // Add HTML for link back to the homepage
         html = html + "<p>Return to Homepage: ";
@@ -270,20 +280,46 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         // Add HTML for the movies list
         html = html + "<ul>";
         for (String movie : lga) {
-            html = html + "<li>" + movie + "</li>";
+          html = html+   "<table>"+
+          "<tr>";
+          html = html +  "<th>" + movie + "</th>";
+          
         }
         html = html + "</ul>";
 
         return html;
     }
 
+    public String output(String age) {
+      String html = "";
+      html = html + "<h5> age in "  + age + "</h5>";
+      
+      html = html+   "<table>"+
+      "<tr>"+
+
+
+ "<th>" + "Local Government Area" + "</th>"+
+ "<th>" + "Age" + "</th>"+
+"<th>" + "Age" + "</th>" + "</tr>";
+      // Look up movies from JDBC
+      JDBCConnection jdbc = new JDBCConnection();
+      ArrayList<String> ages = jdbc.getLgaByage(age);
+      
+      // Add HTML for the movies list
+      html = html + "<ul>";
+      for (String movie : ages) {
+     
+          html = html +   "<tr>"+
+          "<th>" + movie + "</th>";
+          html = html + "<th>"  + age + "</th>";
+
+      }
+      html = html + "</ul>";
+
+      return html;
+  }
+
 }
-
-
-
-
-
-
 
 
 
