@@ -142,10 +142,12 @@ public class JDBCConnection {
             while (results.next()) {
                 String code     = results.getString("lga_code");
                 lga.add(code );
+                String age     = results.getString("age");
+                lga.add(age);
+          
                 String lgacount     = results.getString("count");
                 lga.add(lgacount);
-                String status     = results.getString("status");
-                lga.add(status);
+              
               
           
             }
@@ -206,13 +208,12 @@ public class JDBCConnection {
                 lga.add(code );
               
                 String getage     = results.getString("age");
-                lga.add(getage);
-              
-              
-            }
+                lga.add(getage); }
       
             
-
+              
+                    
+        
 
             // Close the statement because we are done with it
             statement.close();
@@ -230,9 +231,70 @@ public class JDBCConnection {
                 System.err.println(e.getMessage());
             }
         }
-
         // Finally we return all of the movies
         return lga;
     }
 
+
+
+
+
+    public ArrayList<String> getLgaBycnt(String cntType) {
+        ArrayList<String> lga = new ArrayList<String>();
+
+        // Setup the variable for the JDBC connection
+        Connection connection = null;
+
+        try {
+            // Connect to JDBC data base
+            connection = DriverManager.getConnection(DATABASE);
+
+            // Prepare a new SQL Query & Set a timeout
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            // The Query
+            String query = "SELECT count FROM Homeles WHERE lga_code  = 10050 AND status ='at-risk'";
+            
+        
+            System.out.println(query);
+            
+            // Get Result
+            ResultSet results = statement.executeQuery(query);
+
+            // Process all of the results
+            while (results.next()) {
+                String count  = results.getString("count");
+                lga.add(count );
+                String status  = results.getString("status");
+                lga.add(status );
+            }
+
+            // Close the statement because we are done with it
+            statement.close();
+        }catch (SQLException e) {
+            // If there is an error, lets just pring the error
+            System.err.println(e.getMessage());
+        } finally {
+            // Safety code to cleanup
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                // connection close failed.
+                System.err.println(e.getMessage());
+            }
+        }
+              return lga;
+            }
+
+
+
+
+
+
+
+
 }
+

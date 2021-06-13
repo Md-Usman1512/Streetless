@@ -142,7 +142,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "      <label for='age_drop'>Select the Age (Dropdown):</label>";
         html = html + "      <select id='age_drop' name='age_drop'>";
         html = html + "         <option>0-9</option>";
-        html = html + "         <option>10-19</option>";
+        html = html + "         <option>10_19</option>";
         html = html + "         <option>20-29</option>";
         html = html + "         <option>30-39</option>";
         html = html + "         <option>40-49</option>";
@@ -215,51 +215,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
 
 
-       html = html + "<h2>HTML Table</h2>"+
-
-        "<table>"+
-          "<tr>"+
-            "<th>Local Government Area, State</th>"+
-            "<th>People at risk of being homeless</th>"+
-            "<th>Meidan Age</th>"+
-            "<th> Gender </th>"+
-
-          "</tr>"+
-          "<tr>"+
-            "<td>Germany</td>"+
-            "<td>100000</td>"+
-            "<td>11</td>"+
-            "<td>Female</td>"+
-
-
-
-          "</tr>"+
-          "<tr>"+
-            "<td>Centro comercial Moctezuma</td>"+
-            "<td> Mexico</td>"+
-            "<td> 50 </td>"+
-            "<td> Male</td>"+
-
-
-            
-          "</tr>"+
-          "<tr>"+
-            "<td>Roland Mendel</td>"+
-          "</tr>"+
-          "<tr>"+
-            "<td>+Island Trading</td>"+
-          "</tr>"+
-          "<tr>"+
-            "<td>+Laughing Bacchus Winecellars</td>"+
-            "<td>Canada </td>"+
-          "</tr>"+
-          "<tr>"+
-            "<td+Magazzini Alimentari Riuniti</td>"+
-            "<td> Giovanni Rovelli</td>"+
-            "<td> Italy</td>"+
-          "</tr>"+
-        "</table>";
-
+    
 
         // Finish the HTML webpage
         html = html + "</body>" + "</html>";
@@ -278,17 +234,40 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         ArrayList<String> lga = jdbc.getLgaBypop(status);
         
         // Add HTML for the movies list
-        html = html + "<ul>";
+        html = html + "<li>";
         for (String movie : lga) {
           html = html+   "<table>"+
           "<tr>";
           html = html +  "<th>" + movie + "</th>";
           
         }
-        html = html + "</ul>";
+        html = html + "</li>";
 
         return html;
     }
+
+
+    public String outputcount(String cnt) {
+      String html = "";
+      html = html + "<h2> Homeless in "  + cnt + "</h2>";
+
+      // Look up movies from JDBC
+      JDBCConnection jdbc = new JDBCConnection();
+      ArrayList<String> lga = jdbc.getLgaBycnt(cnt);
+      
+      // Add HTML for the movies list
+      html = html + "<li>";
+      for (String movie : lga) {
+        html = html+   "<table>"+
+        "<tr>";
+        html = html +  "<th>" + cnt + "</th>";
+        
+      }
+      html = html + "</li>";
+
+      return html;
+  }
+
 
     public String output(String age) {
       String html = "";
