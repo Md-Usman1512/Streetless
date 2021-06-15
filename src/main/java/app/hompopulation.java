@@ -218,7 +218,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         }
         String age_drop = context.formParam("age_drop");
         
-        if (movietype_drop == null) {
+        if (movietype_drop == null){
             // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html + "<h2><i>No results to show for dropbox LGA </i></h2>";
         } else {
@@ -270,7 +270,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
            String code = value.getKey().toString();
            ArrayList<String> arrValues= new ArrayList(value.getValue());
            String fetchedage=arrValues.get(0);
-           String gende=arrValues.get(1);
+           String gend=arrValues.get(1);
            String count=arrValues.get(2);
 
           html = html +   "<tr>"+
