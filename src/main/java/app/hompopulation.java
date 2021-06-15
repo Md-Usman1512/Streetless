@@ -66,11 +66,11 @@ public class hompopulation implements Handler {
 
        "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6></h6>"+"</a>"+
 
-       "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>HOME</h6>"+"</a>"+
+       "   <a class='nav-link' href='http://localhost:7000/'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>HOME</h6>"+"</a>"+
 
        "<li class='nav-item dropdown'>"+
        "<div class='dropdown'>"+
-       "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6>REPORTS&DATA</h6></a>"+
+       "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6>REPORTS & DATA</h6></a>"+
 
        "<div class='dropdown-content'>"+
        "      <a href='#'>Detailed reports</a>"+
@@ -83,7 +83,7 @@ public class hompopulation implements Handler {
 
         "   <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>ABOUT</h6>"+"</a>"+
        
-        "  <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>CONTACT</h6>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
+        "  <a class='nav-link' href='http://localhost:7000/contact'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>CONTACT</h6>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
 
         
        
@@ -105,7 +105,7 @@ public class hompopulation implements Handler {
         "</nav>"+
         "</div>";
 
-        html = html + "<a href='#'>Home > </a>"+
+        html = html + "<a href='http://localhost:7000/'>Home > </a>"+
         "<a href='#'>  Reports & Data </a>";
    // Add HTML for the movies list
 
@@ -136,7 +136,8 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "      <select id='movietype_drop' name='movietype_drop'>";
         html = html + "         <option>10050</option>";
         html = html + "         <option>10300</option>";
-        html = html + "         <option>d</option>";
+        html = html + "         <option>20570</option>";
+
         html = html + "      </select>";
 
         html = html + "<form action='/moviestype.html' method='post'>";
@@ -150,6 +151,18 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "         <option>40-49</option>";
         html = html + "         <option>50-59</option>";
         html = html + "         <option>60+</option>";
+        html = html + "         <option>Unknown</option>";
+
+
+        html = html + "      </select>";
+
+        html = html + "<form action='/moviestype.html' method='post'>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='gender_drop'>Select the Gender (Dropdown):</label>";
+        html = html + "      <select id='gender_drop' name='gender_drop'>";
+        html = html + "         <option>All</option>";
+        html = html + "         <option>Male</option>";
+        html = html + "         <option>Female</option>";
 
         html = html + "      </select>"+
 
@@ -178,42 +191,44 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
          * Need to be Careful!!
          *  If the form is not filled in, then the form will return null!
         */
-        String movietype_drop = context.formParam("movietype_drop");
-        if (movietype_drop == null) {
-            // If NULL, nothing to show, therefore we make some "no results" HTML
-            html = html + "<h2><i>No Results to show for dropbox</i></h2>";
-        } else {
-            // If NOT NULL, then lookup the movie by type!
-            html = html + outputMovies(movietype_drop);
-        }
-
+        
         String movietype_textbox = context.formParam("movietype_textbox");
         if (movietype_textbox == null || movietype_textbox == "") {
             // If NULL, nothing to show, therefore we make some "no results" HTML
-            html = html + "<h2><i>No Results to show for textbox</i></h2>";
+            html = html +  "<br>" +"<br>" + "<h7><i>No Results to show for textbox</i></h7>";
         } else {
             // If NOT NULL, then lookup the movie by type!
-            html = html + outputMovies(movietype_textbox);
+        }
+        
+        String movietype_drop = context.formParam("movietype_drop");
+        if (movietype_drop == null) {
+            // If NULL, nothing to show, therefore we make some "no results" HTML
+            html = html + "<h6><i>No Results to show for dropbox</i></h6>";
+        } else {
+            // If NOT NULL, then lookup the movie by type!
+        
         }
 
-
-        String age_drop = context.formParam("age_drop");
-        if (movietype_drop == null) {
+        String gender_drop = context.formParam("gender_drop");
+        if (gender_drop == null) {
             // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html + "<h2><i>No resss to show for dropbox</i></h2>";
         } else {
             // If NOT NULL, then lookup the movie by type!
-            html = html + output(age_drop);
+        }
+        String age_drop = context.formParam("age_drop");
+        
+        if (movietype_drop == null) {
+            // If NULL, nothing to show, therefore we make some "no results" HTML
+            html = html + "<h2><i>No results to show for dropbox LGA </i></h2>";
+        } else {
+            // If NOT NULL, then lookup the movie by type!
+            html = html + output(age_drop, movietype_drop, gender_drop);
         }
 
-      
 
+    
 
-        // Add HTML for link back to the homepage
-        html = html + "<p>Return to Homepage: ";
-        html = html + "<a href='/'>Link to Homepage</a>";
-        html = html + "</p>";
-       
 
 
 
@@ -227,34 +242,13 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         context.html(html);
     }
 
-    public String outputMovies(String status) {
-        String html = "";
-        html = html + "<h2> Homeless in "  + status + "</h2>";
-
-        // Look up movies from JDBC
-        JDBCConnection jdbc = new JDBCConnection();
-        ArrayList<String> lga = jdbc.getLgaBypop(status);
-        
-        // Add HTML for the movies list
-        html = html + "<li>";
-        for (String movie : lga) {
-          html = html+   "<table>"+
-          "<tr>"; 
-         
-
-          html = html +  "<th>" + status + "</th>";
-          
-        }
-        html = html + "</li>";
-
-        return html;
-    }
+  
 
 
     
-    public String output(String age) {
+    public String output(String age, String lga, String gender) {
       String html = "";
-      html = html + "<h5> age in "  + age + "</h5>";
+      html = html + "<h5> At-risk of homeless population in LGA " + lga +  "of age group "  + age + ", " + gender + "</h5>";
       
       html = html+   "<table>"+
       "<tr>"+
@@ -268,7 +262,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 "</tr>";
       // Look up movies from JDBC
       JDBCConnection jdbc = new JDBCConnection();
-      HashMap<String, ArrayList<String>> mapValues = jdbc.getLgaByage(age);
+      HashMap<String, ArrayList<String>> mapValues = jdbc.getLgaByage(age,lga, gender);
       
       // Add HTML for the movies list
       html = html + "<ul>";
@@ -276,7 +270,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
            String code = value.getKey().toString();
            ArrayList<String> arrValues= new ArrayList(value.getValue());
            String fetchedage=arrValues.get(0);
-           String gender=arrValues.get(1);
+           String gende=arrValues.get(1);
            String count=arrValues.get(2);
 
           html = html +   "<tr>"+
@@ -288,9 +282,20 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
       }
       html = html + "</ul>";
 
+
+        // Add HTML for link back to the homepage
+        html = html + "<p>Return to Homepage: ";
+        html = html + "<a href='/'>Link to Homepage</a>";
+        html = html + "</p>";
+       
+
       return html;
   }
 
+
+
+
+  
 }
 
 

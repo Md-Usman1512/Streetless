@@ -150,7 +150,7 @@ public class Index implements Handler {
  "   <div class='numbers d-flex flex-md-row flex-wrap justify-content-center'>"+
  "     <div class='rect'>"+
                  "    <h1>6784</h1>"+
-                 "   <p>Are at risk of being homeless</p>"+
+                 "   <p>were homeless in Australia in 2018 </p>"+
                  "  <div class='container-fluid text-center'>"+
                  "   <div class='numbers d-flex flex-md-row flex-wrap justify-content-center'>"+
                  " <div class='rect2'>"+
@@ -161,7 +161,7 @@ public class Index implements Handler {
 
                  "<div class='rect3'>"+
                  " <h1>9152</h1>"+
-                 " <p>Homeless are under the age of 15</p>"+
+                 " <p>were at a risk of being homeless in 2018</p>"+
                  "</div>"+
                  "</div>"+
                  "</div>"+
@@ -269,7 +269,6 @@ html = html +
 
 
  // Link for each page
- html = html + "<li> <a href='movies.html'>List all Movies</a> </li>";
  html = html + "<li> <a href='moviestype.html'>Get Movies by Type</a> </li>";
 
         // Finish the List HTML

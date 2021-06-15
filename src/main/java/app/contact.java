@@ -24,8 +24,7 @@ public class contact implements Handler {
         String html = "<html>";
 
         // Add some Header information
-        html = html + "<head>" + 
-               "<title>Movies</title>";
+        html = html + "<head>" ;
 
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
@@ -65,14 +64,14 @@ public class contact implements Handler {
 
        "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6></h6>"+"</a>"+
 
-       "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>HOME</h6>"+"</a>"+
+       "   <a class='nav-link' href='http://localhost:7000'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>HOME</h6>"+"</a>"+
 
        "<li class='nav-item dropdown'>"+
        "<div class='dropdown'>"+
-       "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6>REPORTS&DATA</h6></a>"+
+       "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6>REPORTS & DATA</h6></a>"+
 
        "<div class='dropdown-content'>"+
-       "      <a href='#'>Detailed reports</a>"+
+       "      <a href='http://localhost:7000/moviestype.html#'>Detailed reports</a>"+
        "      <a href='#'>In-depth reports</a>"+
        "    </div>"+
        "  </div>"+

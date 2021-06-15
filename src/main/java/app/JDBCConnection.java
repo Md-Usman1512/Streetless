@@ -58,7 +58,7 @@ public class JDBCConnection {
                 // We can lookup a column of the a single record in the
                 // result using the column name
                 // BUT, we must be careful of the column type!
-                int id              = results.getInt("mvnumb");
+            
                 String gender     = results.getString("gender");
                 int year            = results.getInt("year");
                 String agegroup         = results.getString("age");
@@ -67,6 +67,8 @@ public class JDBCConnection {
                 // For now we will just store the movieName and ignore the id
                 lga.get(code);
                 lga.get(agegroup);
+                lga.get(gender);
+
             }
 
             // Close the statement because we are done with it
@@ -94,24 +96,7 @@ public class JDBCConnection {
     /**
      * Get all of the Movie Titles in the database
      */
-    public ArrayList<String> getMovieTitles() {
-        ArrayList<String> titles = new ArrayList<String>();
-
-        // TODO: fill in yourself
-
-        return titles;
-    }
-
-    /**
-     * Count the number of movies in the database
-     */
-    public int countMovies() {
-        int count = 0;
-
-        // TODO: fill in yourself
-
-        return count;
-    }
+   
 
     /**
      * Get all the movies in the database by a given type.
@@ -119,63 +104,7 @@ public class JDBCConnection {
      * This has been implemented for you as an example.
      * HINT: you can use this to find all of the horror movies!
      */
-    public ArrayList<String> getLgaBypop(String lgaType) {
-        ArrayList<String> lga = new ArrayList<String>();
-
-
-        // Setup the variable for the JDBC connection
-        Connection connection = null;
-
-        try {
-            // Connect to JDBC data base
-            connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            // The Query
-            String query = "SELECT * FROM Homeles WHERE status = 'at-risk' AND lga_code  = '" + lgaType + "'";
-
-        
-            System.out.println(query);
-            
-            // Get Result
-            ResultSet results = statement.executeQuery(query);
-
-            // Process all of the results
-            while (results.next()) {
-                String code     = results.getString("lga_code");
-                lga.add(code );
-               
-          
-                String lgacount     = results.getString("count");
-                lga.add(lgacount);
-              
-              
-          
-            }
-            // Close the statement because we are done with it
-            statement.close();
-        } catch (SQLException e) {
-            // If there is an error, lets just pring the error
-            System.err.println(e.getMessage());
-        } finally {
-            // Safety code to cleanup
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }
-
-        // Finally we return all of the movies
-        return lga;
-    }
-
+ 
     
     // TODO: Keep adding more methods here to answer all of the questions from the Studio Class activities
 
@@ -183,7 +112,7 @@ public class JDBCConnection {
 
 
 
-    public HashMap<String, ArrayList<String>> getLgaByage(String ageType) {
+    public HashMap<String, ArrayList<String>> getLgaByage(String ageType, String lgaType, String lgaGender) {
         ArrayList<String> lga = new ArrayList<String>();
         HashMap<String, ArrayList<String>> mapValues = new HashMap<String, ArrayList<String>>();
         // Setup the variable for the JDBC connection
@@ -198,8 +127,7 @@ public class JDBCConnection {
             statement.setQueryTimeout(30);
 
             // The Query
-            String query = "SELECT * FROM Homeles WHERE status = 'at-risk' AND age  = '" + ageType + "'";
-            
+            String query = "SELECT * FROM Homeles WHERE age  = '" + ageType + "' AND gender = '" + lgaGender + "' AND lga_code = '" + lgaType + "'";
             
 
             System.out.println(query);
