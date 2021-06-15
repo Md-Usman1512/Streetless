@@ -1,7 +1,8 @@
 package app;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -27,8 +28,8 @@ public class JDBCConnection {
     /**
      * Get all of the Movies in the database
      */
-    public ArrayList<String> getLga() {
-        ArrayList<String> lga = new ArrayList<String>();
+    public HashMap<String, ArrayList<String>> getLga() {
+        HashMap<String, ArrayList<String>> lga = new HashMap<String, ArrayList<String>>();
 
         // Setup the variable for the JDBC connection
         Connection connection = null;
@@ -46,6 +47,9 @@ public class JDBCConnection {
             
             // Get Result
             ResultSet results = statement.executeQuery(query);
+           
+
+            
 
             // Process all of the results
             // The "results" variable is similar to an array
@@ -61,14 +65,14 @@ public class JDBCConnection {
                 String code = results.getString("lga_code");
 
                 // For now we will just store the movieName and ignore the id
-                lga.add(code);
-                lga.add(agegroup);
+                lga.get(code);
+                lga.get(agegroup);
             }
 
             // Close the statement because we are done with it
             statement.close();
         } catch (SQLException e) {
-            // If there is an error, lets just pring the error
+            // If there is an error, lets just pr/ing the error
             System.err.println(e.getMessage());
         } finally {
             // Safety code to cleanup
@@ -118,6 +122,7 @@ public class JDBCConnection {
     public ArrayList<String> getLgaBypop(String lgaType) {
         ArrayList<String> lga = new ArrayList<String>();
 
+
         // Setup the variable for the JDBC connection
         Connection connection = null;
 
@@ -131,7 +136,7 @@ public class JDBCConnection {
 
             // The Query
             String query = "SELECT * FROM Homeles WHERE status = 'at-risk' AND lga_code  = '" + lgaType + "'";
-            
+
         
             System.out.println(query);
             
@@ -142,8 +147,7 @@ public class JDBCConnection {
             while (results.next()) {
                 String code     = results.getString("lga_code");
                 lga.add(code );
-                String age     = results.getString("age");
-                lga.add(age);
+               
           
                 String lgacount     = results.getString("count");
                 lga.add(lgacount);
@@ -179,9 +183,9 @@ public class JDBCConnection {
 
 
 
-    public ArrayList<String> getLgaByage(String ageType) {
+    public HashMap<String, ArrayList<String>> getLgaByage(String ageType) {
         ArrayList<String> lga = new ArrayList<String>();
-
+        HashMap<String, ArrayList<String>> mapValues = new HashMap<String, ArrayList<String>>();
         // Setup the variable for the JDBC connection
         Connection connection = null;
 
@@ -194,9 +198,10 @@ public class JDBCConnection {
             statement.setQueryTimeout(30);
 
             // The Query
-            String query = "SELECT * FROM Homeles WHERE age  = '" + ageType + "'";
+            String query = "SELECT * FROM Homeles WHERE status = 'at-risk' AND age  = '" + ageType + "'";
             
-        
+            
+
             System.out.println(query);
             
             // Get Result
@@ -205,10 +210,16 @@ public class JDBCConnection {
             // Process all of the results
             while (results.next()) {
                 String code     = results.getString("lga_code");
-                lga.add(code );
-              
-                String getage     = results.getString("age");
-                lga.add(getage); }
+                String age     = results.getString("age");
+                String gender = results.getString("gender");
+                String count = results.getString("count");
+                ArrayList<String> values =  new ArrayList<String>();
+                values.add(age);
+                values.add(gender);
+                values.add(count);
+                mapValues.put(code, values);
+
+            }
       
             
               
@@ -232,62 +243,15 @@ public class JDBCConnection {
             }
         }
         // Finally we return all of the movies
-        return lga;
+        return mapValues;
     }
 
 
 
 
 
-    public ArrayList<String> getLgaBycnt(String cntType) {
-        ArrayList<String> lga = new ArrayList<String>();
-
-        // Setup the variable for the JDBC connection
-        Connection connection = null;
-
-        try {
-            // Connect to JDBC data base
-            connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            // The Query
-            String query = "SELECT count FROM Homeles WHERE lga_code  = 10050 AND status ='at-risk'";
+    
             
-        
-            System.out.println(query);
-            
-            // Get Result
-            ResultSet results = statement.executeQuery(query);
-
-            // Process all of the results
-            while (results.next()) {
-                String count  = results.getString("count");
-                lga.add(count );
-                String status  = results.getString("status");
-                lga.add(status );
-            }
-
-            // Close the statement because we are done with it
-            statement.close();
-        }catch (SQLException e) {
-            // If there is an error, lets just pring the error
-            System.err.println(e.getMessage());
-        } finally {
-            // Safety code to cleanup
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }
-              return lga;
-            }
 
 
 

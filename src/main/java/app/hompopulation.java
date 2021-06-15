@@ -1,6 +1,8 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
@@ -237,8 +239,10 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "<li>";
         for (String movie : lga) {
           html = html+   "<table>"+
-          "<tr>";
-          html = html +  "<th>" + movie + "</th>";
+          "<tr>"; 
+         
+
+          html = html +  "<th>" + status + "</th>";
           
         }
         html = html + "</li>";
@@ -247,28 +251,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
     }
 
 
-    public String outputcount(String cnt) {
-      String html = "";
-      html = html + "<h2> Homeless in "  + cnt + "</h2>";
-
-      // Look up movies from JDBC
-      JDBCConnection jdbc = new JDBCConnection();
-      ArrayList<String> lga = jdbc.getLgaBycnt(cnt);
-      
-      // Add HTML for the movies list
-      html = html + "<li>";
-      for (String movie : lga) {
-        html = html+   "<table>"+
-        "<tr>";
-        html = html +  "<th>" + cnt + "</th>";
-        
-      }
-      html = html + "</li>";
-
-      return html;
-  }
-
-
+    
     public String output(String age) {
       String html = "";
       html = html + "<h5> age in "  + age + "</h5>";
@@ -279,18 +262,28 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
  "<th>" + "Local Government Area" + "</th>"+
  "<th>" + "Age" + "</th>"+
-"<th>" + "Age" + "</th>" + "</tr>";
+"<th>" + "Gender" + "</th>" + 
+"<th>" + "Count" + "</th>"+
+
+"</tr>";
       // Look up movies from JDBC
       JDBCConnection jdbc = new JDBCConnection();
-      ArrayList<String> ages = jdbc.getLgaByage(age);
+      HashMap<String, ArrayList<String>> mapValues = jdbc.getLgaByage(age);
       
       // Add HTML for the movies list
       html = html + "<ul>";
-      for (String movie : ages) {
-     
+      for (Map.Entry<String, ArrayList<String>> value : mapValues.entrySet()){
+           String code = value.getKey().toString();
+           ArrayList<String> arrValues= new ArrayList(value.getValue());
+           String fetchedage=arrValues.get(0);
+           String gender=arrValues.get(1);
+           String count=arrValues.get(2);
+
           html = html +   "<tr>"+
-          "<th>" + movie + "</th>";
-          html = html + "<th>"  + age + "</th>";
+          "<th>" + code + "</th>";
+          html = html + "<th>"  + fetchedage + "</th>";
+          html = html + "<th>"  + gender + "</th>";
+          html = html + "<th>"  + count + "</th>";
 
       }
       html = html + "</ul>";
