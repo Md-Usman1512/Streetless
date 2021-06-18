@@ -112,7 +112,7 @@ public class JDBCConnection {
 
 
 
-    public HashMap<String, ArrayList<String>> getLgaByage(String ageType, String lgaType, String lgaGender) {
+    public HashMap<String, ArrayList<String>> getLgaByage(String state, String ageType, String lgaType, String lgaGender, String sort) {
         ArrayList<String> lga = new ArrayList<String>();
         HashMap<String, ArrayList<String>> mapValues = new HashMap<String, ArrayList<String>>();
         // Setup the variable for the JDBC connection
@@ -127,14 +127,110 @@ public class JDBCConnection {
             statement.setQueryTimeout(30);
             String query;
             
-if(lgaGender.equals("All")) {
-     query = "SELECT * FROM Homeles WHERE status = 'at-risk' AND age  = '" + ageType +  "' AND lga_code = '" + lgaType + "'";
+                 
+                query = "";
+           
+                       
 
-    } else {
-            // The Query
-         query = "SELECT * FROM Homeles WHERE status = 'at-risk'  AND age  = '" + ageType + "' AND gender = '" + lgaGender + "' AND lga_code = '" + lgaType + "'";
-}           
-            // Get Result
+            if (state.equals("New South Wales") && (lgaGender.equals("All"))){
+
+query = "SELECT * FROM Homeles WHERE status = 'at-risk'   AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+
+            }
+
+else if (state.equals("New South Wales")) {query = "SELECT * FROM Homeles WHERE status = 'at-risk'AND gender = '" + lgaGender + "' AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+
+}
+
+
+if (state.equals("Victoria") && (lgaGender.equals("All"))){
+
+    query = "SELECT * FROM Homeles WHERE status = 'at-risk'   AND age  = '" + ageType +  "' AND lga_code LIKE '2%'";
+    
+                }
+    
+    else if (state.equals("Victoria")) {query = "SELECT * FROM Homeles WHERE status = 'at-risk'AND gender = '" + lgaGender + "' AND age  = '" + ageType +  "' AND lga_code LIKE '2%'";
+    
+    }
+
+
+
+
+    if (state.equals("Queensland") && (lgaGender.equals("All"))){
+
+        query = "SELECT * FROM Homeles WHERE status = 'at-risk'   AND age  = '" + ageType +  "' AND lga_code LIKE '3%'";
+        
+                    }
+        
+        else if (state.equals("Queensland")) {query = "SELECT * FROM Homeles WHERE status = 'at-risk'AND gender = '" + lgaGender + "' AND age  = '" + ageType +  "' AND lga_code LIKE '3%'";
+        
+        }
+
+
+        if (state.equals("New South Wales") && (lgaGender.equals("All"))){
+
+            query = "SELECT * FROM Homeles WHERE status = 'at-risk'   AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+            
+                        }
+            
+            else if (state.equals("New South Wales")) {query = "SELECT * FROM Homeles WHERE status = 'at-risk'AND gender = '" + lgaGender + "' AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+            
+            }
+
+
+            if (state.equals("New South Wales") && (lgaGender.equals("All"))){
+
+                query = "SELECT * FROM Homeles WHERE status = 'at-risk'   AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+                
+                            }
+                
+                else if (state.equals("New South Wales")) {query = "SELECT * FROM Homeles WHERE status = 'at-risk'AND gender = '" + lgaGender + "' AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+                
+                }
+
+
+                if (state.equals("New South Wales") && (lgaGender.equals("All"))){
+
+                    query = "SELECT * FROM Homeles WHERE status = 'at-risk'   AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+                    
+                                }
+                    
+                    else if (state.equals("New South Wales")) {query = "SELECT * FROM Homeles WHERE status = 'at-risk'AND gender = '" + lgaGender + "' AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+                    
+                    }
+
+
+                    if (state.equals("New South Wales") && (lgaGender.equals("All"))){
+
+                        query = "SELECT * FROM Homeles WHERE status = 'at-risk'   AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+                        
+                                    }
+                        
+                        else if (state.equals("New South Wales")) {query = "SELECT * FROM Homeles WHERE status = 'at-risk'AND gender = '" + lgaGender + "' AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+                        
+                        }
+
+
+                        if (state.equals("New South Wales") && (lgaGender.equals("All"))){
+
+                            query = "SELECT * FROM Homeles WHERE status = 'at-risk'   AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+                            
+                                        }
+                            
+                            else if (state.equals("New South Wales")) {query = "SELECT * FROM Homeles WHERE status = 'at-risk'AND gender = '" + lgaGender + "' AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+                            
+                            }
+
+
+                            if (sort.equals("Worst")) { 
+                                query = "SELECT lga_code FROM Homeles ORDER BY lga_code DESC";
+
+                            }
+                            else {
+                                query = "SELECT lga_code  FROM Homeles ORDER BY lga_code ASC";
+
+                            }
+    // Get Result
             ResultSet results = statement.executeQuery(query);
             Integer counter=0;
             // Process all of the results

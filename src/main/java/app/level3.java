@@ -73,7 +73,7 @@ public class level3 implements Handler {
        "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6>REPORTS & DATA</h6></a>"+
 
        "<div class='dropdown-content'>"+
-       "      <a href='http://localhost:7000/lgaregion.html'>Detailed reports</a>"+
+       "      <a href='#'>Detailed reports</a>"+
        "      <a href='#'>In-depth reports</a>"+
        "    </div>"+
        "  </div>"+
@@ -91,7 +91,14 @@ public class level3 implements Handler {
        
         
         
-     
+        "<p class='nav-item'>"+
+
+        "<div class='topnav'>"+
+        "<br>"+
+        "<div class='input-group'>"+
+        "<input type='text' class='form-control bg-dark text-white' id='inlineFormInputGroupUsername2' placeholder='Search..'>"+
+        "<div class='input-group-prepend'>"+
+"</p>"+
 "</p>"+
         "</ul>"+
         "</div>"+
@@ -102,7 +109,7 @@ public class level3 implements Handler {
         "<a href='#'>  Reports & Data </a>";
    // Add HTML for the movies list
 
-html = html + "<h3> Level 3 ratio Reports and data of homeless by region </h3>"; 
+html = html + "<h3> Reports and data of homeless by region </h3>"; 
 
 
 
@@ -123,7 +130,7 @@ html = html + "<h3> Level 3 ratio Reports and data of homeless by region </h3>";
          * 
          * IMPORTANT! the action speicifes the URL for POST!
          */
-        html = html + "<form action='/lgaregion.html' method='post'>";
+        html = html + "<form action='/moviestype.html' method='post'>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='movietype_drop'>Select the region (Dropdown):</label>";
         html = html + "      <select id='movietype_drop' name='movietype_drop'>";
@@ -133,7 +140,7 @@ html = html + "<h3> Level 3 ratio Reports and data of homeless by region </h3>";
 
         html = html + "      </select>";
 
-        html = html + "<form action='/lgaregion.html' method='post'>";
+        html = html + "<form action='/moviestype.html' method='post'>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='age_drop'>Select the Age (Dropdown):</label>";
         html = html + "      <select id='age_drop' name='age_drop'>";
@@ -149,7 +156,7 @@ html = html + "<h3> Level 3 ratio Reports and data of homeless by region </h3>";
 
         html = html + "      </select>";
 
-        html = html + "<form action='/lgaregion.html' method='post'>";
+        html = html + "<form action='/moviestype.html' method='post'>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='gender_drop'>Select the Gender (Dropdown):</label>";
         html = html + "      <select id='gender_drop' name='gender_drop'>";
@@ -159,7 +166,7 @@ html = html + "<h3> Level 3 ratio Reports and data of homeless by region </h3>";
 
         html = html + "      </select>"+
 
-        "<form action='/lgaregion.html'>"+
+        "<form action='/moviestype.html'>"+
         "<h5>SelectGender</h5>"+
         "<input type='radio' id='male' name='gender' value='male'>" +
         "<label for='male'>Male" +
@@ -184,7 +191,81 @@ html = html + "<h3> Level 3 ratio Reports and data of homeless by region </h3>";
          * Need to be Careful!!
          *  If the form is not filled in, then the form will return null!
         */
-     
+        
+        String movietype_textbox = context.formParam("movietype_textbox");
+        if (movietype_textbox == null || movietype_textbox == "") {
+            // If NULL, nothing to show, therefore we make some "no results" HTML
+            html = html +  "<br>" +"<br>" + "<h7><i>No Results to show for textbox</i></h7>";
+        } else {
+            // If NOT NULL, then lookup the movie by type!
+        }
+        
+        String movietype_drop = context.formParam("movietype_drop");
+        if (movietype_drop == null) {
+            // If NULL, nothing to show, therefore we make some "no results" HTML
+            html = html + "<h6><i>No Results to show for dropbox</i></h6>";
+        } else {
+            // If NOT NULL, then lookup the movie by type!
+        
+        }
+
+        String gender_drop = context.formParam("gender_drop");
+        if (gender_drop == null) {
+            // If NULL, nothing to show, therefore we make some "no results" HTML
+            html = html + "<h2><i>No resss to show for dropbox</i></h2>";
+        } else {
+            // If NOT NULL, then lookup the movie by type!
+        }
+        String age_drop = context.formParam("age_drop");
+        
+        if (movietype_drop == null){
+            // If NULL, nothing to show, therefore we make some "no results" HTML
+            html = html + "<h2><i>No results to show for dropbox LGA </i></h2>";
+        } else {
+            // If NOT NULL, then lookup the movie by type!
+            html = html + output(age_drop, movietype_drop, gender_drop) + "<br>" + "<br>";
+            
+
+        }
+       
+
+
+
+    
+
+
+
+
+    
+
+        // Finish the HTML webpage
+        html = html + "</body>" + "</html>";
+
+        // DO NOT MODIFY THIS
+        // Makes Javalin render the webpage
+        context.html(html);
+    }
+
+  
+
+    
+    public String output(String age, String lga, String gender) {
+      String html = "";
+      html = html + "<h5> At-risk of homeless population in LGA " + lga +  "of age group "  + age + ", " + gender + "</h5>";
+      
+      html = html+   "<table>"+
+      "<tr>"+
+
+
+ "<th>" + "Local Government Area" + "</th>"+
+ "<th>" + "Age" + "</th>"+
+"<th>" + "Gender" + "</th>" + 
+"<th>" + "Count" + "</th>"+
+
+"</tr>";
+      // Look up movies from JDBC
+  
+
           
       
       html = html + "</ul>";
@@ -195,7 +276,7 @@ html = html + "</p>";
 
 
         
-      
+      return html;
  
   
 

@@ -127,13 +127,21 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
        
         html = html + "<form action='/lgaregion.html' method='post'>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='movietype_drop'>Select the State (Dropdown):</label>";
+        html = html + "      <label for='state_drop'>Select the State (Dropdown):</label>";
 
         
         html = html + "      <select id='state_drop' name='state_drop'>";
+
         html = html + "         <option>New South Wales</option>";
         html = html + "         <option>Victoria</option>";
+        html = html + "         <option>Queensland</option>";
         html = html + "         <option>South Australia</option>";
+        html = html + "         <option>Western Australia</option>";
+        html = html + "         <option>Northern Teritory</option>";
+        html = html + "         <option>Australian Capital Teritory</option>";
+        html = html + "         <option>Other</option>";
+
+
 
         html = html + "      </select>";
        
@@ -141,10 +149,11 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
        
          html = html + "<form action='/lgaregion.html' method='post'>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='movietype_drop'>Select the region (Dropdown):</label>";
+        html = html + "      <label for='lgatype_drop'>Select the region (Dropdown):</label>";
 
         
-        html = html + "      <select id='movietype_drop' name='movietype_drop'>";
+        html = html + "      <select id='lgatype_drop' name='lgatype_drop'>";
+
         html = html + "         <option>10050</option>";
         html = html + "         <option>10300</option>";
         html = html + "         <option>20570</option>";
@@ -155,13 +164,14 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='age_drop'>Select the Age (Dropdown):</label>";
         html = html + "      <select id='age_drop' name='age_drop'>";
+
         html = html + "         <option>0-9</option>";
         html = html + "         <option>10_19</option>";
         html = html + "         <option>20-29</option>";
         html = html + "         <option>30-39</option>";
         html = html + "         <option>40-49</option>";
         html = html + "         <option>50-59</option>";
-        html = html + "         <option>60+</option>";
+        html = html + "         <option>60-plus</option>";
         html = html + "         <option>Unknown</option>";
 
 
@@ -174,6 +184,15 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "         <option>All</option>";
         html = html + "         <option>Male</option>";
         html = html + "         <option>Female</option>";
+
+        html = html + "      </select>";
+
+        html = html + "<form action='/lgaregion.html' method='post'>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='sort_drop'>Select the sort (Dropdown):</label>";
+        html = html + "      <select id='sort_drop' name='sort_drop'>";
+        html = html + "         <option>Best</option>";
+        html = html + "         <option>Worst</option>";
 
         html = html + "      </select>"+
 
@@ -190,8 +209,8 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='movietype_textbox'>OR Enter the LGA/State(Textbox)</label>";
-        html = html + "      <input class='form-control' id='movietype_textbox' name='movietype_textbox'>";
+        html = html + "      <label for='lgatype_textbox'>OR Enter the LGA/State(Textbox)</label>";
+        html = html + "      <input class='form-control' id='lgatype_textbox' name='lgatype_textbox'>";
         html = html + "   </div>";
         html = html + "   <button type='submit' class='btn btn-primary'>Submit</button>";
         html = html + "</form>";
@@ -203,16 +222,16 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
          *  If the form is not filled in, then the form will return null!
         */
         
-        String movietype_textbox = context.formParam("movietype_textbox");
-        if (movietype_textbox == null || movietype_textbox == "") {
+        String lgatype_textbox = context.formParam("lgatype_textbox");
+        if (lgatype_textbox == null || lgatype_textbox == "") {
             // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html +  "<br>" +"<br>" + "<h7><i>No Results to show for textbox</i></h7>";
         } else{
             // If NOT NULL, then lookup the movie by type!
         }
         
-        String movietype_drop = context.formParam("movietype_drop");
-        if (movietype_drop == null) {
+        String lgatype_drop = context.formParam("lgatype_drop");
+        if (lgatype_drop == null) {
             // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html + "<h6><i>No Results to show for dropbox</i></h6>";
         } else {
@@ -228,13 +247,16 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
             // If NOT NULL, then lookup the movie by type!
         }
         String age_drop = context.formParam("age_drop");
+        String state_drop = context.formParam("state_drop");
+        String sort_drop = context.formParam("state_drop");
+
         
-        if (movietype_drop == null){
+        if (lgatype_drop == null){
             // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html + "<h2><i>No results to show for dropbox LGA </i></h2>";
         } else {
             // If NOT NULL, then lookup the movie by type!
-            html = html + output(age_drop, movietype_drop, gender_drop) + "<br>" + "<br>";
+            html = html + output(state_drop, age_drop, lgatype_drop, gender_drop, sort_drop) + "<br>" + "<br>";
             
 
         }
@@ -261,7 +283,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
     
      
-    public String output(String age, String lga, String gender) {
+    public String output(String state, String age, String lga, String gender, String sort) {
         String html = "";
         html = html + "<h5> At-risk of homeless population in LGA " + lga +  "of age group "  + age + ", " + gender + "</h5>";
         
@@ -277,7 +299,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
   "</tr>";
         // Look up movies from JDBC
         JDBCConnection jdbc = new JDBCConnection();
-        HashMap<String, ArrayList<String>> mapValues = jdbc.getLgaByage(age,lga, gender);
+        HashMap<String, ArrayList<String>> mapValues = jdbc.getLgaByage(state, age,lga, gender, sort);
         
         // Add HTML for the movies list
         html = html + "<ul>";
