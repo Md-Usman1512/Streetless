@@ -132,7 +132,7 @@ public class JDBCConnection {
            
                        
 
-            if (state.equals("New South Wales") && (lgaGender.equals("All"))){
+ if (state.equals("New South Wales") && (lgaGender.equals("All"))){
 
 query = "SELECT * FROM Homeles WHERE status = 'at-risk'   AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
 
@@ -191,7 +191,7 @@ if (state.equals("Victoria") && (lgaGender.equals("All"))){
 
                 if (state.equals("New South Wales") && (lgaGender.equals("All"))){
 
-                    query = "SELECT * FROM Homeles WHERE status = 'at-risk'   AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
+                    query = "SELECT * FROM Homeles WHERE status = 'at-risk' AND age  = '" + ageType +  "' AND lga_code LIKE '1%'";
                     
                                 }
                     
@@ -222,14 +222,7 @@ if (state.equals("Victoria") && (lgaGender.equals("All"))){
                             }
 
 
-                            if (sort.equals("Worst")) { 
-                                query = "SELECT lga_code FROM Homeles ORDER BY lga_code DESC";
-
-                            }
-                            else {
-                                query = "SELECT lga_code  FROM Homeles ORDER BY lga_code ASC";
-
-                            }
+                        
     // Get Result
             ResultSet results = statement.executeQuery(query);
             Integer counter=0;

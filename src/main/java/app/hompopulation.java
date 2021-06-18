@@ -183,18 +183,9 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "      <select id='gender_drop' name='gender_drop'>";
         html = html + "         <option>All</option>";
         html = html + "         <option>Male</option>";
-        html = html + "         <option>Female</option>";
+        html = html + "         <option>Female</option>"+
 
-        html = html + "      </select>";
-
-        html = html + "<form action='/lgaregion.html' method='post'>";
-        html = html + "   <div class='form-group'>";
-        html = html + "      <label for='sort_drop'>Select the sort (Dropdown):</label>";
-        html = html + "      <select id='sort_drop' name='sort_drop'>";
-        html = html + "         <option>Best</option>";
-        html = html + "         <option>Worst</option>";
-
-        html = html + "      </select>"+
+ 
 
         "<form action='/lgaregion.html'>"+
         "<h5>SelectGender</h5>"+
@@ -212,6 +203,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "      <label for='lgatype_textbox'>OR Enter the LGA/State(Textbox)</label>";
         html = html + "      <input class='form-control' id='lgatype_textbox' name='lgatype_textbox'>";
         html = html + "   </div>";
+
         html = html + "   <button type='submit' class='btn btn-primary'>Submit</button>";
         html = html + "</form>";
         html = html + "</form>";
@@ -288,6 +280,8 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "<h5> At-risk of homeless population in LGA " + lga +  "of age group "  + age + ", " + gender + "</h5>";
         
         html = html+   "<table>"+
+        "<table class'table-sortable'>"+
+
         "<tr>"+
   
   
@@ -321,7 +315,9 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
             html = html +   "</tr>";
 
         }
-        html = html +   "</table>";
+        html = html +   "</table>"+
+       " <script src='./src/tablesort.js'></script>";
+
         
         html = html + "</ul>";
   // Add HTML for link back to the homepage

@@ -14,7 +14,7 @@ import io.javalin.http.Handler;
  * by writing the raw HTML into a Java String object
  
  */
-public class level3 implements Handler {
+public class level implements Handler {
 
     // URL of this page relative to http://localhost:7000/
     public static final String URL = "/level3";
@@ -74,7 +74,7 @@ public class level3 implements Handler {
 
        "<div class='dropdown-content'>"+
        "      <a href='#'>Detailed reports</a>"+
-       "      <a href='#'>In-depth reports</a>"+
+       "      <a href='http://localhost:7000/level3'>In-depth reports</a>"+
        "    </div>"+
        "  </div>"+
        "</li>"+
@@ -91,14 +91,7 @@ public class level3 implements Handler {
        
         
         
-        "<p class='nav-item'>"+
-
-        "<div class='topnav'>"+
-        "<br>"+
-        "<div class='input-group'>"+
-        "<input type='text' class='form-control bg-dark text-white' id='inlineFormInputGroupUsername2' placeholder='Search..'>"+
-        "<div class='input-group-prepend'>"+
-"</p>"+
+      
 "</p>"+
         "</ul>"+
         "</div>"+
@@ -130,43 +123,71 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
          * 
          * IMPORTANT! the action speicifes the URL for POST!
          */
-        html = html + "<form action='/moviestype.html' method='post'>";
+       
+       
+        html = html + "<form action='/level3.html' method='post'>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='movietype_drop'>Select the region (Dropdown):</label>";
-        html = html + "      <select id='movietype_drop' name='movietype_drop'>";
+        html = html + "      <label for='state_drop'>Select the State (Dropdown):</label>";
+
+        
+        html = html + "      <select id='state_drop' name='state_drop'>";
+
+        html = html + "         <option>New South Wales</option>";
+        html = html + "         <option>Victoria</option>";
+        html = html + "         <option>Queensland</option>";
+        html = html + "         <option>South Australia</option>";
+        html = html + "         <option>Western Australia</option>";
+        html = html + "         <option>Northern Teritory</option>";
+        html = html + "         <option>Australian Capital Teritory</option>";
+        html = html + "         <option>Other</option>";
+
+
+
+        html = html + "      </select>";
+       
+       
+       
+         html = html + "<form action='/level3.html' method='post'>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='lgatype_drop'>Select the region (Dropdown):</label>";
+
+        
+        html = html + "      <select id='lgatype_drop' name='lgatype_drop'>";
+
         html = html + "         <option>10050</option>";
         html = html + "         <option>10300</option>";
         html = html + "         <option>20570</option>";
 
         html = html + "      </select>";
 
-        html = html + "<form action='/moviestype.html' method='post'>";
+        html = html + "<form action='/level3.html' method='post'>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='age_drop'>Select the Age (Dropdown):</label>";
         html = html + "      <select id='age_drop' name='age_drop'>";
+
         html = html + "         <option>0-9</option>";
         html = html + "         <option>10_19</option>";
         html = html + "         <option>20-29</option>";
         html = html + "         <option>30-39</option>";
         html = html + "         <option>40-49</option>";
         html = html + "         <option>50-59</option>";
-        html = html + "         <option>60+</option>";
+        html = html + "         <option>60-plus</option>";
         html = html + "         <option>Unknown</option>";
 
 
         html = html + "      </select>";
 
-        html = html + "<form action='/moviestype.html' method='post'>";
+        html = html + "<form action='/level3.html' method='post'>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='gender_drop'>Select the Gender (Dropdown):</label>";
         html = html + "      <select id='gender_drop' name='gender_drop'>";
         html = html + "         <option>All</option>";
         html = html + "         <option>Male</option>";
-        html = html + "         <option>Female</option>";
+        html = html + "         <option>Female</option>"+
 
-        html = html + "      </select>"+
+ 
 
-        "<form action='/moviestype.html'>"+
+        "<form action='/level3.html'>"+
         "<h5>SelectGender</h5>"+
         "<input type='radio' id='male' name='gender' value='male'>" +
         "<label for='male'>Male" +
@@ -179,8 +200,8 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='movietype_textbox'>OR Enter the LGA/State(Textbox)</label>";
-        html = html + "      <input class='form-control' id='movietype_textbox' name='movietype_textbox'>";
+        html = html + "      <label for='lgatype_textbox'>OR Enter the LGA/State(Textbox)</label>";
+        html = html + "      <input class='form-control' id='lgatype_textbox' name='lgatype_textbox'>";
         html = html + "   </div>";
         html = html + "   <button type='submit' class='btn btn-primary'>Submit</button>";
         html = html + "</form>";
@@ -192,16 +213,16 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
          *  If the form is not filled in, then the form will return null!
         */
         
-        String movietype_textbox = context.formParam("movietype_textbox");
-        if (movietype_textbox == null || movietype_textbox == "") {
+        String lgatype_textbox = context.formParam("lgatype_textbox");
+        if (lgatype_textbox == null || lgatype_textbox == "") {
             // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html +  "<br>" +"<br>" + "<h7><i>No Results to show for textbox</i></h7>";
-        } else {
+        } else{
             // If NOT NULL, then lookup the movie by type!
         }
         
-        String movietype_drop = context.formParam("movietype_drop");
-        if (movietype_drop == null) {
+        String lgatype_drop = context.formParam("lgatype_drop");
+        if (lgatype_drop == null) {
             // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html + "<h6><i>No Results to show for dropbox</i></h6>";
         } else {
@@ -217,25 +238,20 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
             // If NOT NULL, then lookup the movie by type!
         }
         String age_drop = context.formParam("age_drop");
+        String state_drop = context.formParam("state_drop");
+        String sort_drop = context.formParam("state_drop");
+
         
-        if (movietype_drop == null){
+        if (lgatype_drop == null){
             // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html + "<h2><i>No results to show for dropbox LGA </i></h2>";
         } else {
             // If NOT NULL, then lookup the movie by type!
-            html = html + output(age_drop, movietype_drop, gender_drop) + "<br>" + "<br>";
+            html = html + output(state_drop, age_drop, lgatype_drop, gender_drop, sort_drop) + "<br>" + "<br>";
             
 
         }
-       
-
-
-
     
-
-
-
-
     
 
         // Finish the HTML webpage
@@ -249,47 +265,61 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
   
 
     
-    public String output(String age, String lga, String gender) {
-      String html = "";
-      html = html + "<h5> At-risk of homeless population in LGA " + lga +  "of age group "  + age + ", " + gender + "</h5>";
-      
-      html = html+   "<table>"+
-      "<tr>"+
-
-
- "<th>" + "Local Government Area" + "</th>"+
- "<th>" + "Age" + "</th>"+
-"<th>" + "Gender" + "</th>" + 
-"<th>" + "Count" + "</th>"+
-
-"</tr>";
-      // Look up movies from JDBC
-  
-
-          
-      
-      html = html + "</ul>";
-// Add HTML for link back to the homepage
-html = html + "<p>Return to Homepage: ";
-html = html + "<a href='/'>Link to Homepage</a>";
-html = html + "</p>";
-
-
+     
+    public String output(String state, String age, String lga, String gender, String sort) {
+        String html = "";
+        html = html + "<h5> At-risk of homeless population in LGA " + lga +  "of age group "  + age + ", " + gender + "</h5>";
         
-      return html;
- 
+        html = html+   "<table>"+
+        "<tr>"+
   
+  
+   "<th>" + "Local Government Area" + "</th>"+
+   "<th>" + "Age" + "</th>"+
+  "<th>" + "Gender" + "</th>" + 
+  "<th>" + "Count" + "</th>"+
+  
+  "</tr>";
+        // Look up movies from JDBC
+        JDBCConnection jdbc = new JDBCConnection();
+        HashMap<String, ArrayList<String>> mapValues = jdbc.getLgaByage(state, age,lga, gender, sort);
+        
+        // Add HTML for the movies list
+        html = html + "<ul>";
+        for (Map.Entry<String, ArrayList<String>> value : mapValues.entrySet()){
+             
+             ArrayList<String> arrValues= new ArrayList(value.getValue());
+             String fetchedage=arrValues.get(0);
+             String gend=arrValues.get(1);
+             String count=arrValues.get(2);
+             String code = arrValues.get(3);
+        
 
-}
 
-}
+           html = html + "<th>" + code + "</th>";
+            html = html + "<th>"  + fetchedage + "</th>";
+            html = html + "<th>"  + gend + "</th>";
+            html = html + "<th>"  + count + "</th>";
+            
+            html = html +   "</tr>";
 
-
-
-
-
-
-
-
-
-
+        }
+        html = html +   "</table>";
+        
+        html = html + "</ul>";
+  // Add HTML for link back to the homepage
+  html = html + "<p>Return to Homepage: ";
+  html = html + "<a href='/'>Link to Homepage</a>";
+  html = html + "</p>";
+  
+        
+        return html;
+  }
+  
+  }
+  
+  
+  
+  
+  
+  

@@ -42,7 +42,8 @@ public class App {
         // ADD ALL OF YOUR WEBPAGES HERE
         app.get(Index.URL, new Index());
         app.get(contact.URL, new contact());      
-        app.get(level3.URL, new level3());      
+        app.get(level.URL, new level());    
+  
 
      
         app.get(hompopulation.URL, new hompopulation());
