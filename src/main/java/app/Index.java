@@ -75,8 +75,8 @@ public class Index implements Handler {
             "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4>REPORTS&DATA</h4></a>"+
 
             "<div class='dropdown-content'>"+
-            "      <a href='http://localhost:7000/moviestype.html'>Detailed reports</a>"+
-            "      <a href='#'>In-depth reports</a>"+
+            "      <a href='http://localhost:7000/lgaregion.html'>Detailed reports</a>"+
+            "      <a href='http://localhost:7000/level3'>In-depth reports</a>"+
             "    </div>"+
             "  </div>"+
             "</li>"+
@@ -93,14 +93,7 @@ public class Index implements Handler {
             
              
              
-             "<p class='nav-item'>"+
-
-             "<div class='topnav'>"+
-             "<br>"+
-             "<div class='input-group'>"+
-             "<input type='text' class='form-control bg-dark text-white' id='inlineFormInputGroupUsername2' placeholder='Search..'>"+
-             "<div class='input-group-prepend'>"+
-"</p>"+
+            
 "</p>"+
              "</ul>"+
              "</div>"+
@@ -212,7 +205,7 @@ public class Index implements Handler {
                        "</div>"+
                        "<div class='pricing'>"+
                          "<h5>Explore the issue of homelessness in more detail by finding the numbers  regions</h5>"+
-                         "<a href='http://localhost:7000/moviestype.html' class='btn btn-dark px-5 py-2 primary-btn mb-5'>Explore Now</a>"+
+                         "<a href='http://localhost:7000/lgaregion.html' class='btn btn-dark px-5 py-2 primary-btn mb-5'>Explore Now</a>"+
                        "</div>"+
                      "</div>"+
                    "</div>"+
@@ -223,7 +216,7 @@ public class Index implements Handler {
                        "</div>"+
                        "<div class='pricing'>"+
                          "<h5> Deep view of the issue of homelessness, its impact and the trends. Find the ratios and more</h5>"+
-                         "<a href='#' class='btn btn-dark px-5 py-2 primary-btn mb-5'> Explore Now</a>"+
+                         "<a href='http://localhost:7000/level3' class='btn btn-dark px-5 py-2 primary-btn mb-5'> Explore Now</a>"+
                        "</div>"+
                      "</div>"+
                    "</div>"+
@@ -240,26 +233,19 @@ html = html +
 "<div class='container-fluid p-0'>"+
 "<div class='row text-left'>"+
   "<div class='col-md-5 col-sm-5'>"+
-    "<h4 class='text-light'> Quick Links</h4>"+
-    "<h5 class='text-muted'><br> Home</h5>"+
-    "<h5 class='text-muted'> Reports and data</h5>"+
-    "<h5 class='text-muted'> Media</h5>"+
-    "<h5 class='text-muted'> Contact</h5>"+
+    "<h3 class='text-light'> Quick Links</h4>"+
+    "<h4 class='text-muted'>  <br> Home &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp  Reports and data &nbsp;&nbsp;Contact </h4>" + "<br>"  + 
+
+    "<h6 class='text-muted'> <a href='http://localhost:7000/' + <br>  Explore homeless facts &nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp  Data on on homeless<br> </h6> </a>" + "<br>" +
+    "<h6 class='text-muted'> <a href='http://localhost:7000/#section2' + <br>  Overview of Reports & Data &nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;Data on at-risk of homeless<br>  </h6> </a>" +
+
+    "<h5 class='text-muted'> <a href='http://localhost:7000/contact' + <br> Contact </h5> </a>" +
 
 
 
   "</div>"+
 
 
-"<div class='col-md-2 col-sm-12'>"+
-"<h4 class='text-light'> Follow Us </h4>"+
-"<p class='text-muted'> Let us be social </p>"+
-"<div class='column text-light'>"+
-"<i class='fab fa-facebook-f'> </i>"+
-"<i class='fab fa-instagram'> </i>"+
-"<i class='fab fa-twitter'> </i>"+
-"<i class='fab fa-youtube'> </i>"+
-"</div>"+
 "</div>"+
 "</div>"+
 "</div>"+
@@ -268,8 +254,7 @@ html = html +
 
 
 
- // Link for each page
- html = html + "<li> <a href='moviestype.html'>Get Movies by Type</a> </li>";
+ 
 
         // Finish the List HTML
         html = html + "</ul>";

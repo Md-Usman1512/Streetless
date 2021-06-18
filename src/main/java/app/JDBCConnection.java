@@ -125,35 +125,33 @@ public class JDBCConnection {
             // Prepare a new SQL Query & Set a timeout
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
+            String query;
+            
+if(lgaGender.equals("All")) {
+     query = "SELECT * FROM Homeles WHERE status = 'at-risk' AND age  = '" + ageType +  "' AND lga_code = '" + lgaType + "'";
 
+    } else {
             // The Query
-            String query = "SELECT * FROM Homeles WHERE age  = '" + ageType + "' AND gender = '" + lgaGender + "' AND lga_code = '" + lgaType + "'";
-            
-
-            System.out.println(query);
-            
+         query = "SELECT * FROM Homeles WHERE status = 'at-risk'  AND age  = '" + ageType + "' AND gender = '" + lgaGender + "' AND lga_code = '" + lgaType + "'";
+}           
             // Get Result
             ResultSet results = statement.executeQuery(query);
-
+            Integer counter=0;
             // Process all of the results
             while (results.next()) {
-                String code     = results.getString("lga_code");
-                String age     = results.getString("age");
+                //Convert each row to an array
+                String code = results.getString("lga_code");
+                String age  = results.getString("age");
                 String gender = results.getString("gender");
                 String count = results.getString("count");
                 ArrayList<String> values =  new ArrayList<String>();
                 values.add(age);
                 values.add(gender);
                 values.add(count);
-                mapValues.put(code, values);
-
+                values.add(code);
+                //Using counter variable as key to store each row converted to array in the values of the hashmap
+                mapValues.put((counter++).toString(), values);
             }
-      
-            
-              
-                    
-        
-
             // Close the statement because we are done with it
             statement.close();
         } catch (SQLException e) {
@@ -170,7 +168,7 @@ public class JDBCConnection {
                 System.err.println(e.getMessage());
             }
         }
-        // Finally we return all of the movies
+        // Finally we return all of the retreived values
         return mapValues;
     }
 

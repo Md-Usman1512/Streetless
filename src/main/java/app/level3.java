@@ -14,10 +14,10 @@ import io.javalin.http.Handler;
  * by writing the raw HTML into a Java String object
  
  */
-public class hompopulation implements Handler {
+public class level3 implements Handler {
 
     // URL of this page relative to http://localhost:7000/
-    public static final String URL = "/lgaregion.html";
+    public static final String URL = "/level3";
 
     @Override
     public void handle(Context context) throws Exception {
@@ -73,8 +73,8 @@ public class hompopulation implements Handler {
        "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6>REPORTS & DATA</h6></a>"+
 
        "<div class='dropdown-content'>"+
-       "      <a href='#'>Detailed reports</a>"+
-       "      <a href='http://localhost:7000/level3'>In-depth reports</a>"+
+       "      <a href='http://localhost:7000/lgaregion.html'>Detailed reports</a>"+
+       "      <a href='#'>In-depth reports</a>"+
        "    </div>"+
        "  </div>"+
        "</li>"+
@@ -91,7 +91,7 @@ public class hompopulation implements Handler {
        
         
         
-      
+     
 "</p>"+
         "</ul>"+
         "</div>"+
@@ -102,7 +102,7 @@ public class hompopulation implements Handler {
         "<a href='#'>  Reports & Data </a>";
    // Add HTML for the movies list
 
-html = html + "<h3> Reports and data of homeless by region </h3>"; 
+html = html + "<h3> Level 3 ratio Reports and data of homeless by region </h3>"; 
 
 
 
@@ -123,27 +123,9 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
          * 
          * IMPORTANT! the action speicifes the URL for POST!
          */
-       
-       
         html = html + "<form action='/lgaregion.html' method='post'>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='movietype_drop'>Select the State (Dropdown):</label>";
-
-        
-        html = html + "      <select id='state_drop' name='state_drop'>";
-        html = html + "         <option>New South Wales</option>";
-        html = html + "         <option>Victoria</option>";
-        html = html + "         <option>South Australia</option>";
-
-        html = html + "      </select>";
-       
-       
-       
-         html = html + "<form action='/lgaregion.html' method='post'>";
-        html = html + "   <div class='form-group'>";
         html = html + "      <label for='movietype_drop'>Select the region (Dropdown):</label>";
-
-        
         html = html + "      <select id='movietype_drop' name='movietype_drop'>";
         html = html + "         <option>10050</option>";
         html = html + "         <option>10300</option>";
@@ -207,7 +189,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         if (movietype_textbox == null || movietype_textbox == "") {
             // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html +  "<br>" +"<br>" + "<h7><i>No Results to show for textbox</i></h7>";
-        } else{
+        } else {
             // If NOT NULL, then lookup the movie by type!
         }
         
@@ -260,61 +242,47 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
   
 
     
-     
     public String output(String age, String lga, String gender) {
-        String html = "";
-        html = html + "<h5> At-risk of homeless population in LGA " + lga +  "of age group "  + age + ", " + gender + "</h5>";
-        
-        html = html+   "<table>"+
-        "<tr>"+
-  
-  
-   "<th>" + "Local Government Area" + "</th>"+
-   "<th>" + "Age" + "</th>"+
-  "<th>" + "Gender" + "</th>" + 
-  "<th>" + "Count" + "</th>"+
-  
-  "</tr>";
-        // Look up movies from JDBC
-        JDBCConnection jdbc = new JDBCConnection();
-        HashMap<String, ArrayList<String>> mapValues = jdbc.getLgaByage(age,lga, gender);
-        
-        // Add HTML for the movies list
-        html = html + "<ul>";
-        for (Map.Entry<String, ArrayList<String>> value : mapValues.entrySet()){
-             
-             ArrayList<String> arrValues= new ArrayList(value.getValue());
-             String fetchedage=arrValues.get(0);
-             String gend=arrValues.get(1);
-             String count=arrValues.get(2);
-             String code = arrValues.get(3);
-        
+      String html = "";
+      html = html + "<h5> At-risk of homeless population in LGA " + lga +  "of age group "  + age + ", " + gender + "</h5>";
+      
+      html = html+   "<table>"+
+      "<tr>"+
 
 
-           html = html + "<th>" + code + "</th>";
-            html = html + "<th>"  + fetchedage + "</th>";
-            html = html + "<th>"  + gend + "</th>";
-            html = html + "<th>"  + count + "</th>";
-            
-            html = html +   "</tr>";
+ "<th>" + "Local Government Area" + "</th>"+
+ "<th>" + "Age" + "</th>"+
+"<th>" + "Gender" + "</th>" + 
+"<th>" + "Count" + "</th>"+
 
-        }
-        html = html +   "</table>";
+"</tr>";
+      // Look up movies from JDBC
+  
+
+          
+      
+      html = html + "</ul>";
+// Add HTML for link back to the homepage
+html = html + "<p>Return to Homepage: ";
+html = html + "<a href='/'>Link to Homepage</a>";
+html = html + "</p>";
+
+
         
-        html = html + "</ul>";
-  // Add HTML for link back to the homepage
-  html = html + "<p>Return to Homepage: ";
-  html = html + "<a href='/'>Link to Homepage</a>";
-  html = html + "</p>";
+      return html;
+ 
   
-        
-        return html;
-  }
-  
-  }
-  
-  
-  
-  
-  
-  
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+

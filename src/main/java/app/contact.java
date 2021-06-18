@@ -71,7 +71,7 @@ public class contact implements Handler {
        "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6>REPORTS & DATA</h6></a>"+
 
        "<div class='dropdown-content'>"+
-       "      <a href='http://localhost:7000/moviestype.html#'>Detailed reports</a>"+
+       "      <a href='http://localhost:7000/lgaregion.html#'>Detailed reports</a>"+
        "      <a href='#'>In-depth reports</a>"+
        "    </div>"+
        "  </div>"+
