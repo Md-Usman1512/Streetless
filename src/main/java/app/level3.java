@@ -184,81 +184,7 @@ html = html + "<h3> Level 3 ratio Reports and data of homeless by region </h3>";
          * Need to be Careful!!
          *  If the form is not filled in, then the form will return null!
         */
-        
-        String movietype_textbox = context.formParam("movietype_textbox");
-        if (movietype_textbox == null || movietype_textbox == "") {
-            // If NULL, nothing to show, therefore we make some "no results" HTML
-            html = html +  "<br>" +"<br>" + "<h7><i>No Results to show for textbox</i></h7>";
-        } else {
-            // If NOT NULL, then lookup the movie by type!
-        }
-        
-        String movietype_drop = context.formParam("movietype_drop");
-        if (movietype_drop == null) {
-            // If NULL, nothing to show, therefore we make some "no results" HTML
-            html = html + "<h6><i>No Results to show for dropbox</i></h6>";
-        } else {
-            // If NOT NULL, then lookup the movie by type!
-        
-        }
-
-        String gender_drop = context.formParam("gender_drop");
-        if (gender_drop == null) {
-            // If NULL, nothing to show, therefore we make some "no results" HTML
-            html = html + "<h2><i>No resss to show for dropbox</i></h2>";
-        } else {
-            // If NOT NULL, then lookup the movie by type!
-        }
-        String age_drop = context.formParam("age_drop");
-        
-        if (movietype_drop == null){
-            // If NULL, nothing to show, therefore we make some "no results" HTML
-            html = html + "<h2><i>No results to show for dropbox LGA </i></h2>";
-        } else {
-            // If NOT NULL, then lookup the movie by type!
-            html = html + output(age_drop, movietype_drop, gender_drop) + "<br>" + "<br>";
-            
-
-        }
-       
-
-
-
-    
-
-
-
-
-    
-
-        // Finish the HTML webpage
-        html = html + "</body>" + "</html>";
-
-        // DO NOT MODIFY THIS
-        // Makes Javalin render the webpage
-        context.html(html);
-    }
-
-  
-
-    
-    public String output(String age, String lga, String gender) {
-      String html = "";
-      html = html + "<h5> At-risk of homeless population in LGA " + lga +  "of age group "  + age + ", " + gender + "</h5>";
-      
-      html = html+   "<table>"+
-      "<tr>"+
-
-
- "<th>" + "Local Government Area" + "</th>"+
- "<th>" + "Age" + "</th>"+
-"<th>" + "Gender" + "</th>" + 
-"<th>" + "Count" + "</th>"+
-
-"</tr>";
-      // Look up movies from JDBC
-  
-
+     
           
       
       html = html + "</ul>";
@@ -269,7 +195,7 @@ html = html + "</p>";
 
 
         
-      return html;
+      
  
   
 
