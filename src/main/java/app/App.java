@@ -10,15 +10,14 @@ import io.javalin.core.util.RouteOverviewPlugin;
  * Running this class as regular java application will start the 
  * Javalin HTTP Server and our web application.
  *
- * @author Timothy Wiley, 2021. email: timothy.wiley@rmit.edu.au
- * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
+
  */
 public class App {
 
     public static final int         JAVALIN_PORT    = 7000;
     public static final String      CSS_DIR         = "css/";
     public static final String      IMAGES_DIR      = "images/";
-
+    public static final String      JS_DIR           = "javascript/";
     public static void main(String[] args) {
         // Create our HTTP server and listen in port 700
         Javalin app = Javalin.create(config -> {
@@ -26,6 +25,8 @@ public class App {
             
             // Uncomment this if you have files in the CSS Directory
             config.addStaticFiles(CSS_DIR);
+
+            config.addStaticFiles(JS_DIR);
 
             // Uncomment this if you have files in the Images Directory
             config.addStaticFiles(IMAGES_DIR);
@@ -42,8 +43,11 @@ public class App {
         // ADD ALL OF YOUR WEBPAGES HERE
         app.get(Index.URL, new Index());
         app.get(contact.URL, new contact());      
-        app.get(level.URL, new level());    
-  
+       
+        app.get(About.URL, new About());      
+       
+        app.get(level3.URL, new level3());      
+        app.post(level3.URL, new level3());
 
      
         app.get(hompopulation.URL, new hompopulation());

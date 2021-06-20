@@ -506,3 +506,44 @@ table {
   tr:nth-child(even) {
 	background-color: #dddddd;
   }
+
+  
+
+  .table-sortable th {
+    cursor: pointer;
+  }
+  
+  .table-sortable .th-sort-asc::after {
+    content: "\25b4";
+  }
+  
+  .table-sortable .th-sort-desc::after {
+    content: "\25be";
+  }
+  
+  .table-sortable .th-sort-asc::after,
+  .table-sortable .th-sort-desc::after {
+    margin-left: 5px;
+  }
+  
+  .table-sortable .th-sort-asc,
+  .table-sortable .th-sort-desc {
+    background: rgba(66, 151, 230, 0.1);
+  }
+  
+
+  .form-group{
+    background: rgba(174, 217, 241, 0.137);
+
+  }
+
+#state_drop{
+    position: absolute;
+    top:228px;
+    width: 170px;
+    height: 25px;
+    margin-left: 10px;
+    font-size: 19px;
+    margin-right: 5px;
+
+  }

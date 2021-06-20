@@ -76,14 +76,14 @@ public class Index implements Handler {
 
             "<div class='dropdown-content'>"+
             "      <a href='http://localhost:7000/lgaregion.html'>Detailed reports</a>"+
-            "      <a href='http://localhost:7000/level3'>In-depth reports</a>"+
+            "      <a href='http://localhost:7000/level.html'>In-depth reports</a>"+
             "    </div>"+
             "  </div>"+
             "</li>"+
            
             "  <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "<h4>MEIDA</h4>"+"</a>"+ "</a>"+
 
-             "   <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h4>ABOUT</h4>"+"</a>"+
+             "   <a class='nav-link' href='http://localhost:7000/about'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h4>ABOUT</h4>"+"</a>"+
             
              "  <a class='nav-link' href='http://localhost:7000/contact'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h4>CONTACT</h4>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
 
@@ -142,12 +142,12 @@ public class Index implements Handler {
  "  <div class='container-fluid text-center'>"+
  "   <div class='numbers d-flex flex-md-row flex-wrap justify-content-center'>"+
  "     <div class='rect'>"+
-                 "    <h1>6784</h1>"+
-                 "   <p>were homeless in Australia in 2018 </p>"+
+                 "    <h1>116427</h1>"+
+                 "   <p>were homeless in Australia in 2016 </p>"+
                  "  <div class='container-fluid text-center'>"+
                  "   <div class='numbers d-flex flex-md-row flex-wrap justify-content-center'>"+
                  " <div class='rect2'>"+
-                   " <h1>102256</h1>"+
+                   " <h1>23284</h1>"+
                  " <p>Homeless identify as Aboriginal</p>"+
                  "</div>"+
                  "</div>"+
@@ -234,12 +234,15 @@ html = html +
 "<div class='row text-left'>"+
   "<div class='col-md-5 col-sm-5'>"+
     "<h3 class='text-light'> Quick Links</h4>"+
-    "<h4 class='text-muted'>  <br> Home &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp  Reports and data &nbsp;&nbsp;Contact </h4>" + "<br>"  + 
+    "<h4 class='text-muted'>  <br> Home &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp  Reports and data </h4>"  + 
 
-    "<h6 class='text-muted'> <a href='http://localhost:7000/' + <br>  Explore homeless facts &nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp  Data on on homeless<br> </h6> </a>" + "<br>" +
-    "<h6 class='text-muted'> <a href='http://localhost:7000/#section2' + <br>  Overview of Reports & Data &nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;Data on at-risk of homeless<br>  </h6> </a>" +
+    "<h6 class='text-muted'> <a href='http://localhost:7000/' + <br>  Explore homeless facts" + "</a>" + "&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp" +  "<a href='http://localhost:7000/ Data on on homeless <br> </h6> </a>" + "<br>" +
+    "<h6 class='text-muted'> <a href='http://localhost:7000/#section2' + <br>  Overview of Reports & Data </a>"  +
+    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;<a href='http://localhost:7000/lgaregion.html' + <br> At- risk of homeless data </a>"  + 
+      "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp; <a href='http://localhost:7000/level.html' + <br>  In-depth data on homlessness </a>"  
 
-    "<h5 class='text-muted'> <a href='http://localhost:7000/contact' + <br> Contact </h5> </a>" +
++
+
 
 
 

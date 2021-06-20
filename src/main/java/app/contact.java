@@ -88,14 +88,7 @@ public class contact implements Handler {
 
        
         
-        
-        "<p class='nav-item'>"+
-
-        "<div class='topnav'>"+
-        "<br>"+
-        "<div class='input-group'>"+
-        "<input type='text' class='form-control bg-dark text-white' id='inlineFormInputGroupUsername2' placeholder='Search..'>"+
-        "<div class='input-group-prepend'>"+
+     
 "</p>"+
 "</p>"+
         "</ul>"+
