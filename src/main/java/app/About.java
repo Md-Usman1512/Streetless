@@ -72,7 +72,7 @@ public class About implements Handler {
 
        "<div class='dropdown-content'>"+
        "      <a href='http://localhost:7000/lgaregion.html#'>Detailed reports</a>"+
-       "      <a href='#'>In-depth reports</a>"+
+       "      <a href='http://localhost:7000/level.html'>In-depth reports</a>"+
        "    </div>"+
        "  </div>"+
        "</li>"+
@@ -88,14 +88,7 @@ public class About implements Handler {
        
         
         
-        "<p class='nav-item'>"+
-
-        "<div class='topnav'>"+
-        "<br>"+
-        "<div class='input-group'>"+
-        "<input type='text' class='form-control bg-dark text-white' id='inlineFormInputGroupUsername2' placeholder='Search..'>"+
-        "<div class='input-group-prepend'>"+
-"</p>"+
+        
 "</p>"+
         "</ul>"+
         "</div>"+

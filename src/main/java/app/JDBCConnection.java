@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -205,13 +206,16 @@ public HashMap<String, ArrayList<String>> getHomelessDetails(String state, Strin
                  
                 query = "";
 
-
-query = "SELECT H.LGA_CODE, H.AGE, H.GENDER, H.YEAR, H.COUNT, R.LGA_NAME, R.STATE FROM Homeles  H, Region R WHERE H.LGA_CODE = R.LGA_CODE AND H.status = 'at-risk'  AND H.age  = '" + ageType +  "' AND H.gender = '"+ lgaGender +"' AND H.lga_code LIKE '1%'" + " ORDER BY H.COUNT ";
-
-
-
-
-                        
+if (lgaGender == null || lgaGender.equals("All"))
+            lgaGender="";
+if (state == null || state.equals("All"))
+            state="";
+if (ageType == null || ageType.equals("All"))
+            ageType="";
+if (name == null || name.equals("All"))
+            name="";
+    query = "SELECT H.LGA_CODE, H.AGE, H.GENDER, H.YEAR, H.COUNT, R.LGA_NAME, R.STATE FROM Homeles  H, Region R WHERE H.LGA_CODE = R.LGA_CODE AND H.status = 'at-risk'  AND H.age  LIKE '%" + ageType +  "%' AND H.gender LIKE '%"+ lgaGender +"%'  AND R.STATE LIKE '%" + state + "%' AND  R.LGA_NAME LIKE '%"+ name +"%' ORDER BY H.COUNT "; 
+                      
     // Get Result
             ResultSet results = statement.executeQuery(query);
             Integer counter=0;
@@ -221,10 +225,8 @@ query = "SELECT H.LGA_CODE, H.AGE, H.GENDER, H.YEAR, H.COUNT, R.LGA_NAME, R.STAT
                 String code = results.getString("lga_code");
                 String yearoutput = results.getString("year");
                 String lga_name  = results.getString("lga_name");
-
                 String age  = results.getString("age");
                 String gender = results.getString("gender");
-
                 String count = results.getString("count");
                 ArrayList<String> values =  new ArrayList<String>();
                 values.add(yearoutput);
@@ -257,11 +259,12 @@ query = "SELECT H.LGA_CODE, H.AGE, H.GENDER, H.YEAR, H.COUNT, R.LGA_NAME, R.STAT
     }
 
    
-    public HashMap<String, HashMap<String,String>> buildLGA() {
+    public HashMap<String, ArrayList<String>> buildLGA() {
         ArrayList<String> lga = new ArrayList<String>();
-        HashMap<String, HashMap<String,String>> mapValues = new HashMap<String, HashMap<String,String>>();
+        HashMap<String, ArrayList<String>> arrResultset = new HashMap<String, ArrayList<String>>();
         // Setup the variable for the JDBC connection
         Connection connection = null;
+
         try {
             // Connect to JDBC data base
             connection = DriverManager.getConnection(DATABASE);
@@ -272,17 +275,69 @@ query = "SELECT H.LGA_CODE, H.AGE, H.GENDER, H.YEAR, H.COUNT, R.LGA_NAME, R.STAT
             query = "SELECT * FROM  Region R ";               
             // Get Result
             ResultSet results = statement.executeQuery(query);
+            ArrayList<String> recordNSW = new ArrayList<String>();
+            ArrayList<String> recordVIC = new ArrayList<String>();
+            ArrayList<String> recordQLD = new ArrayList<String>();
+            ArrayList<String> recordACT = new ArrayList<String>();
+            ArrayList<String> recordWA = new ArrayList<String>();
+            ArrayList<String> recordSA = new ArrayList<String>();
+            ArrayList<String> recordNT = new ArrayList<String>();
+            ArrayList<String> recordTAS = new ArrayList<String>();
+            
             // Process all of the results
             while (results.next()) {
-                //Convert each row to an array
-                String state = results.getString("state");
-                String lga_name  = results.getString("lga_name");
-                String lga_code  = results.getString("lga_code");
-                HashMap<String,String> values =  new HashMap<String,String>();
-                values.put(state, lga_name);
-                mapValues.put(lga_code, values);   
+                if(!lga.contains(results.getString("state")))
+                    lga.add(results.getString("state"));
+                if (results.getString("state").equals("New South Wales"))
+                    recordNSW.add(results.getString("lga_name").replaceAll("'", ""));
+                if (results.getString("state").equals("Victoria"))
+                    recordVIC.add(results.getString("lga_name").replaceAll("'", ""));
+                if (results.getString("state").equals("Queensland"))
+                    recordQLD.add(results.getString("lga_name").replaceAll("'", ""));
+                if (results.getString("state").equals("Australian Capital Territory"))
+                    recordACT.add(results.getString("lga_name").replaceAll("'", ""));
+                if (results.getString("state").equals("Western Australia"))
+                    recordWA.add(results.getString("lga_name").replaceAll("'", ""));
+                if (results.getString("state").equals("South Australia"))
+                    recordSA.add(results.getString("lga_name").replaceAll("'", ""));
+                if (results.getString("state").equals("Northern Territory"))
+                    recordNT.add(results.getString("lga_name").replaceAll("'", ""));
+                if (results.getString("state").equals("Tasmania"))
+                    recordTAS.add(results.getString("lga_name").replaceAll("'", ""));
+               
             }
+
+            if (recordNSW != null && recordNSW.size() >0 )            
+                arrResultset.put("New South Wales",recordNSW);
+            if (recordVIC != null && recordVIC.size() >0 ) 
+                arrResultset.put("Victoria",recordVIC);
+            if (recordQLD != null && recordQLD.size() >0 ) 
+                arrResultset.put("Queensland",recordQLD);
+            if (recordACT != null && recordACT.size() >0 ) 
+                arrResultset.put("Australian Capital Territory",recordACT);
+            if (recordWA != null && recordWA.size() >0 ) 
+                arrResultset.put("Western Australia",recordWA);
+            if (recordSA != null && recordSA.size() >0 ) 
+                arrResultset.put("South Australia",recordSA);
+            if (recordNT != null && recordNT.size() >0 ) 
+                arrResultset.put("Northern Territory",recordNT);
+            if (recordTAS != null && recordTAS.size() >0 ) 
+                arrResultset.put("Tasmania",recordTAS);
+            
+           /* for (int i=0; i<lga.size(); i++){
+                ArrayList<String> lganames = new ArrayList<String>();
+                for (Map.Entry stt: arrResultset.entrySet()) {
+                    //Convert each row to an array
+                    if (stt.equals(lga.get(i))){
+                        arr
+                        lganames.add(results1.getString("lga_name"));
+                    }
+                    results1.beforeFirst();
+                } */
+                //mapValues.put(lga.get(i), lganames);
+            //}
             // Close the statement because we are done with it
+            
             statement.close();
         } catch (SQLException e) {
             // If there is an error, lets just pring the error
@@ -299,7 +354,7 @@ query = "SELECT H.LGA_CODE, H.AGE, H.GENDER, H.YEAR, H.COUNT, R.LGA_NAME, R.STAT
             }
         }
         // Finally we return all of the retreived values
-        return mapValues;
+        return arrResultset;
     }
             
 

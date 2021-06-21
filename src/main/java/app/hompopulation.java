@@ -1,5 +1,6 @@
 package app;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +19,7 @@ public class hompopulation implements Handler {
 
     // URL of this page relative to http://localhost:7000/
     public static final String URL = "/lgaregion.html";
-    String state_drop ="All";
+    String allOption ="All";
 
     @Override
     public void handle(Context context) throws Exception {
@@ -51,7 +52,7 @@ public class hompopulation implements Handler {
    "<nav class='navbar navbar-expand-lg'>"+
      "<a class='navbar-brand' href='#'>"+
       
-     "<div class='logo'>"+ "<p style='font-size:44px'> STREETLESS</p></a>"+ "</div>"+
+     "<div class='logo'>"+ "<p style='font-size:44px'>STREETLESS</p></a>"+ "</div>"+
      "<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>" +
        "<i class='fas fa-align-right text-light'>" + "</i>"+
      "</button>"+
@@ -81,7 +82,7 @@ public class hompopulation implements Handler {
        "</li>"+
       
 
-        "   <a class='nav-link' href=''>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>ABOUT</h6>"+"</a>"+
+        "   <a class='nav-link' href='http://localhost:7000/about'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>ABOUT</h6>"+"</a>"+
        
         "  <a class='nav-link' href='http://localhost:7000/contact'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>CONTACT</h6>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
 
@@ -99,7 +100,7 @@ public class hompopulation implements Handler {
         "</div>";
 
         html = html + "<a href='http://localhost:7000/'>Home > </a>"+
-        "<a href='#'>  Reports & Data </a>";
+        "<a href='#'>  Reports & Data  > At- risk of homeless</a>";
    // Add HTML for the movies list
 
 html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>"; 
@@ -123,41 +124,99 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
          * IMPORTANT! the action speicifes the URL for POST!
          */
        
-       
+        JDBCConnection jdbc = new JDBCConnection();
+        HashMap<String, ArrayList<String>> regionMap=new HashMap<String, ArrayList<String>>();
+        regionMap=jdbc.buildLGA();
+        for (Map.Entry state: regionMap.entrySet()){
+            StringBuilder str = new StringBuilder();
+            ArrayList<String> lgaNamesList = new ArrayList<String>();
+            lgaNamesList = regionMap.get(state);
+            if (lgaNamesList != null && lgaNamesList.size()>0){
+                for (String lganame: lgaNamesList){
+                    str.append(lganame).append(",");
+                }
+            }
+            
+        }
+        HashMap<String,String> stateCodes=new HashMap<String, String>();
+        stateCodes.put("New South Wales", "NSW");
+        stateCodes.put("Victoria", "VIC");
+        stateCodes.put("Queensland","QLD");
+        stateCodes.put("South Australia","SA");
+        stateCodes.put("Western Australia", "WA");
+        stateCodes.put("Northern Territory", "NT");
+        stateCodes.put("Tasmania","TAS");
+        stateCodes.put("Australian Capital Territory","ACT");
+
         html = html + "<form action='/lgaregion.html' method='post'>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='state_drop'> <p style= 'font-size:24px'> Select the State: </p>  </label>";
-
-        
-        html = html + "      <select id='state_drop' name='state_drop' onchange='this.form.submit()'>";
-        html = html + "         <option>" + state_drop +"</option>";
-        html = html + "         <option>New South Wales</option>";
+        html = html + "      <select id='state_drop' name='state_drop' onchange='builLGASelect()'>";
+        html = html + "         <option>" + allOption +"</option>";
+        /*html = html + "         <option>New South Wales</option>";
         html = html + "         <option>Victoria</option>";
         html = html + "         <option>Queensland</option>";
         html = html + "         <option>South Australia</option>";
         html = html + "         <option>Western Australia</option>";
         html = html + "         <option>Northern Teritory</option>";
-        html = html + "         <option>Australian Capital Teritory</option>";
+        html = html + "         <option>Australian Capital Teritory</option>";*/
+        for (Map.Entry state: regionMap.entrySet()){
+            String statename = state.toString().split("=")[0];
+            
+            if(state.toString().split("=")[1].length()>2)
+                html = html + "         <option>" + statename+"</option>";
+                
+        }
         html = html + "      </select>";
+
         
-       /* html = html + "       <script>";
-        html = html + "      function updateLGACOde() {";
-        html = html + "         var state = document.getElementById('state_drop').value; ";
-        html = html + "<form action='/lgaregion.html' method='post'>";
-        html = html + "   <div class='form-group'>";
-        html = html + "      <label for='lgatype_drop'>Select the region (Dropdown):</label>";
-        html = html + "      <select id='lgatype_drop' name='lgatype_drop'>";
-        html = html + "         <option>10050</option>";
-        html = html + "         <option>10300</option>";
-        html = html + "         <option>20570</option>";
-        html = html + "      </select>" + <script>;*/
+        html = html + """    
+        
+                     <script type=\"text/javascript\">
+                    function builLGASelect() {
+                        console.log('Begin');
+                       var state = document.getElementById('state_drop').value; """;
+                        Integer counter=0;
+                        String strbldr = new String();
+                       for (Map.Entry state: regionMap.entrySet()){
+                        String statename = state.toString().split("=")[0];
+                        if(state.toString().split("=")[1].length()>2){
+                                html  = html + " var " + stateCodes.get( statename)+"= "+ state.toString().split("=")[1].replaceAll(",", "','").replace("[", "['").replace("]" ,"'];");
+                    }
+                    }
+                    
+                    html = html + " var lgaList = document.createElement('select');";
+                    html= html +" lgaList.id ='lganameslist';";
+                    html = html + " var pageBody = document.body;";
+                    html = html + "var options = '';";
+                    html = html + " if (state == \"New South Wales\"){";
+                    //html = html + "window.alert(\"Inside NSW\");";
+                    html = html + "for (var i =0; i<NSW.length; i++){";
+                    html = html + "options =  options +  '<option value=\"'+NSW[i]+'\">'+NSW[i]+'</option>';}}" ;
+                    //html = html + "window.alert(options);";
+                    html = html + "lgaList.innerHTML=options;";
+                    html = html + " pageBody.appendChild(lgaList);";
+                    html = html + "";
+
+                    html = html + " if (state == \"Victoria\"){";
+                    //html = html + "window.alert(\"Inside NSW\");";
+                    html = html + "for (var i =0; i<VIC.length; i++){";
+                    html = html + "options =  options +  '<option value=\"'+VIC[i]+'\">'+VIC[i]+'</option>';}}" ;
+                    //html = html + "window.alert(options);";
+                    html = html + "lgaList.innerHTML=options;";
+                    html = html + " pageBody.appendChild(lgaList);";
+                    html = html + "}";
+         html = html + """                  
+                    
+                            </script> 
+                            """;
 
         
         html = html + "<form action='/lgaregion.html' method='post'>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='age_drop'><p style= 'font-size:24px'> Select the Age group: </p></label>";
         html = html + "      <select id='age_drop' name='age_drop'>";
-
+        html = html + "         <option>" + allOption +"</option>";
         html = html + "         <option>0-9</option>";
         html = html + "         <option>10_19</option>";
         html = html + "         <option>20-29</option>";
@@ -165,22 +224,15 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
         html = html + "         <option>40-49</option>";
         html = html + "         <option>50-59</option>";
         html = html + "         <option>60-plus</option>";
-        html = html + "         <option>Unknown</option>";
              html = html + "      </select>";
 
         html = html + "<form action='/lgaregion.html' method='post'>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='gender_drop'><p style= 'font-size:24px'> Select the gender: </p></label>";
         html = html + "      <select id='gender_drop' name='gender_drop'>";
-        html = html + "         <option>All</option>";
+        html = html + "         <option>" + allOption +"</option>";
         html = html + "         <option>Male</option>";
         html = html + "         <option>Female</option>"+ "      </select>";
-
- 
-
-       
-
-
 
         html = html + "   </div>";
       
@@ -238,14 +290,13 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
     public String output(String state, String name, String age, String lga, String gender, String sort, String year) {
         String html = "";
         html =html + "<script src='sorttable.js'></script>";
-        html = html + "<p> At-risk of homeless population in LGA " + lga +  "of age group "  + age + ", " + gender + "</hp>";
         html = html+  """ 
                             <table class = 'sortable'>
                             <thead> <tr class='item'>
                             <th>Local Government Code</th>
                             <th>Local Government Area Name</th>
-                            <th>Year</th>
                             <th>Age</th>
+                            <th>year</th>
                             <th>Gender</th>
                             <th>Count</th>
                             </tr></thead><tbody>
@@ -271,8 +322,7 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
         }
         html = html +"</tbody></table>" ;
   // Add HTML for link back to the homepage
-  html = html + "<br> <br> <br><br><br>  <button type='submit' class='btn btn-primary'> <a href='/'>Return to Home</a> </button>";
-  html = html + "</p>";
+ 
         return html;
   }
   }

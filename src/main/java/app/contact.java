@@ -97,7 +97,7 @@ public class contact implements Handler {
         "</div>";
 
         html = html + "<a href='http://localhost:7000/#'>Home > </a>"+
-        "<a href='#'>  Contact </a>";
+        "<a href='http://localhost:7000/contact'>  Contact </a>";
         html = html + "<br>"+ "<br>" + "Please contact us with any questions at" +  "<a href='#'>  exampleemail@gmail.com </a>";
 html = html + "</html>";
 context.html(html);

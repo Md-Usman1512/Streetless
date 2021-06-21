@@ -81,7 +81,6 @@ public class Index implements Handler {
             "  </div>"+
             "</li>"+
            
-            "  <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "<h4>MEIDA</h4>"+"</a>"+ "</a>"+
 
              "   <a class='nav-link' href='http://localhost:7000/about'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h4>ABOUT</h4>"+"</a>"+
             
@@ -216,7 +215,7 @@ public class Index implements Handler {
                        "</div>"+
                        "<div class='pricing'>"+
                          "<h5> Deep view of the issue of homelessness, its impact and the trends. Find the ratios and more</h5>"+
-                         "<a href='http://localhost:7000/level3' class='btn btn-dark px-5 py-2 primary-btn mb-5'> Explore Now</a>"+
+                         "<a href='http://localhost:7000/level.html' class='btn btn-dark px-5 py-2 primary-btn mb-5'> Explore Now</a>"+
                        "</div>"+
                      "</div>"+
                    "</div>"+

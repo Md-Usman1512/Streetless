@@ -135,8 +135,11 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "         <option>Victoria</option>";
         html = html + "         <option>Queensland</option>";
         html = html + "         <option>South Australia</option>";
+        html = html + "         <option>Northern Territory</option>";
+        html = html + "         <option>Western Australia</option>";
         html = html + "         <option>Australian Capital Teritory</option>";
-        
+        html = html + "         <option>Other</option>";
+
 
 
 
@@ -156,6 +159,12 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html + "         <option>10050</option>";
         html = html + "         <option>10300</option>";
         html = html + "         <option>20570</option>";
+        html = html + "         <option>20403</option>";
+        html = html + "         <option>20546</option>";
+        html = html + "         <option>20768</option>";
+        html = html + "         <option>20571</option>";
+        html = html + "         <option>20623</option>";
+
 
         html = html + "      </select>";
 
@@ -163,18 +172,13 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
         html = html + "<form action='/level.html' method='post'>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='state_drop'>Select the income (Dropdown):</label>";
-        html = html + "      <select id='income_drop' name='income_drop' onchange='this.form.submit()'>";
-        html = html + "         <option>1000</option>";
+       
         html = html + "      </select>";
 
       
         html = html + "<form action='/level.html' method='post'>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='mortgage_drop'>Select the mortgage (Dropdown):</label>";
-        html = html + "      <select id='mortgage_drop' name='mortgage_drop' onchange='this.form.submit()'>";
-        html = html + "         <option>1000</option>";
-        html = html + "      </select>";
+       
 
 
     
@@ -195,9 +199,28 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
+        html = html + "      <label for='age_textbox'>Enter the median age: </label>";
+        html = html + "      <input class='form-control' id='age_textbox' name='lgatype_textbox'>";
+        html = html + "   </div>";
+
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='age_textbox'>Enter the median Income:</label>";
+        html = html + "      <input class='form-control' id='age_textbox' name='lgatype_textbox'>";
+        html = html + "   </div>";
+
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='age_textbox'>Enter the median weekly rent:)</label>";
+        html = html + "      <input class='form-control' id='age_textbox' name='lgatype_textbox'>";
+        html = html + "   </div>";
+
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
         html = html + "      <label for='age_textbox'>Enter the median age (Textbox)</label>";
         html = html + "      <input class='form-control' id='age_textbox' name='lgatype_textbox'>";
         html = html + "   </div>";
+
 
         
         html = html + "   <button type='submit' class='btn btn-primary'>Submit</button>";
@@ -283,9 +306,9 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
   
    "<th>" + "Local Government Area" + "</th>"+
    "<th>" + "Median income" + "</th>"+
-   "<th>" + "Meidan Age" + "</th>"+
-  "<th>" + "Gender" + "</th>" + 
-  "<th>" + "% of homeless" + "</th>"+
+   "<th>" + "Median Age" + "</th>"+
+  "<th>" + "Homeless in the state" + "</th>" + 
+  "<th>" + " Median rent" + "</th>"+
   
   "</tr>" + "</thead>";
 
@@ -316,11 +339,10 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
           // html = html + "<tbody>" + "<tr>" + "<td>" + code + "</td>";
             html = html + "<td>"  +  name + "</td>";
             html = html + "<td>"  + weeklyincome + "</td>";
-            html = html + "<td>" + "sss" + "</td>";
+            html = html + "<td>" + "39" + "</td>";
 
             html = html + "<td>"  + repay + "</td>";
             html = html + "<td>"  + rent + "</td>";
-            html = html + "<td>"  + percent + "</td>";
             html = html +   "</tr>"+ "<tbody>" + " <script src = './tablesort.js' >" + "</script>";
 
                 
@@ -330,10 +352,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
         html = html +"</table>" +
         "</ul>";
 
-  // Add HTML for link back to the homepage
-  html = html + "<p>Return to Homepage: ";
-  html = html + "<a href='/'>Link to Homepage</a>";
-  html = html + "</p>";
+
   
         
         return html;
