@@ -121,12 +121,7 @@ public HashMap<String, ArrayList<String>> getHomelessDetails(String state, Strin
         // Prepare a new SQL Query & Set a timeout
         Statement statement = connection.createStatement();
         statement.setQueryTimeout(30);
-        String query =  "SELECT Income.lga_code,"+
-        "lga_name ,"+
-        "median_household_weekly_income ,"+
-        "median_age                     ,"+
-        "median_mortgage_repay_monthly  ,"+
-        "median_rent_weekly ,"    +
+        String query =  "SELECT Income.lga_code, lga_name , median_household_weekly_income , median_age , median_mortgage_repay_monthly, median_rent_weekly ,"    +
         "((homeles.count*1.0 / population*1.0 ) *100.00)  as homeles_percen "+             
     "From Income, homeles, lgainfo_pop "+
     "WHERE Income.lga_code = homeles.lga_code " +
@@ -214,8 +209,12 @@ if (ageType == null || ageType.equals("All"))
             ageType="";
 if (name == null || name.equals("All"))
             name="";
-    query = "SELECT H.LGA_CODE, H.AGE, H.GENDER, H.YEAR, H.COUNT, R.LGA_NAME, R.STATE FROM Homeles  H, Region R WHERE H.LGA_CODE = R.LGA_CODE AND H.status = 'at-risk'  AND H.age  LIKE '%" + ageType +  "%' AND H.gender LIKE '%"+ lgaGender +"%'  AND R.STATE LIKE '%" + state + "%' AND  R.LGA_NAME LIKE '%"+ name.trim() +"%'  ORDER BY H.COUNT "; 
+
+
+    query = "SELECT H.LGA_CODE, H.AGE, H.GENDER, H.YEAR, H.COUNT, R.LGA_NAME, R.STATE FROM Homeles  H, Region R WHERE H.LGA_CODE = R.LGA_CODE AND H.status = 'at-risk'  AND H.age  LIKE '%" + ageType +  "%'  AND H.gender LIKE '%"+ lgaGender +"%'  AND R.STATE LIKE '%" + state + "%' AND  R.LGA_NAME LIKE '%"+ name.trim() +"%'  ORDER BY H.COUNT "; 
                       
+
+
     // Get Result
             ResultSet results = statement.executeQuery(query);
             Integer counter=0;
