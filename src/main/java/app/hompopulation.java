@@ -149,17 +149,10 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
         stateCodes.put("Australian Capital Territory","ACT");
 
         html = html + "<form action='/lgaregion.html' method='post'>";
-        html = html + "   <div class='form-group'>";
-        html = html + "      <label for='state_drop'> <p style= 'font-size:24px'> Select the State: </p>  </label>";
+        html = html + "   <div id='12345'>";
+        html = html + "      <label  id ='state_drop_label' for='state_drop'> <p style= 'font-size:16px'>State: </p>  </label>";
         html = html + "      <select id='state_drop' name='state_drop' onchange='builLGASelect()'>";
         html = html + "         <option>" + allOption +"</option>";
-        /*html = html + "         <option>New South Wales</option>";
-        html = html + "         <option>Victoria</option>";
-        html = html + "         <option>Queensland</option>";
-        html = html + "         <option>South Australia</option>";
-        html = html + "         <option>Western Australia</option>";
-        html = html + "         <option>Northern Teritory</option>";
-        html = html + "         <option>Australian Capital Teritory</option>";*/
         for (Map.Entry state: regionMap.entrySet()){
             String statename = state.toString().split("=")[0];
             
@@ -173,39 +166,57 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
         html = html + """    
         
                      <script type=\"text/javascript\">
-                    function builLGASelect() {
-                        console.log('Begin');
-                       var state = document.getElementById('state_drop').value; """;
+                    function builLGASelect() {  
+                   var state = document.getElementById('state_drop').value; """;
                         Integer counter=0;
                         String strbldr = new String();
                        for (Map.Entry state: regionMap.entrySet()){
                         String statename = state.toString().split("=")[0];
                         if(state.toString().split("=")[1].length()>2){
-                                html  = html + " var " + stateCodes.get( statename)+"= "+ state.toString().split("=")[1].replaceAll(",", "','").replace("[", "['").replace("]" ,"'];");
+                                html  = html + " var " + stateCodes.get( statename)+"= "+ state.toString().split("=")[1].replaceAll(",", "','").replace("[", "['").replace("]" ,"'];\n");
                     }
                     }
-                    
-                    html = html + " var lgaList = document.createElement('select');";
-                    html= html +" lgaList.id ='lganameslist';";
-                    html = html + " var pageBody = document.body;";
-                    html = html + "var options = '';";
-                    html = html + " if (state == \"New South Wales\"){";
-                    //html = html + "window.alert(\"Inside NSW\");";
-                    html = html + "for (var i =0; i<NSW.length; i++){";
-                    html = html + "options =  options +  '<option value=\"'+NSW[i]+'\">'+NSW[i]+'</option>';}}" ;
-                    //html = html + "window.alert(options);";
-                    html = html + "lgaList.innerHTML=options;";
-                    html = html + " pageBody.appendChild(lgaList);";
-                    html = html + "";
+                    html = html + " var sellist =[];\n";
+                    html = html + " var lgaList = document.createElement('select');\n";
+                    html= html +" lgaList.id ='lganameslist';\n";
+                    html = html + " var pageBody = document.body;\n";
+                    //Add NSW LGAs
+                    html = html + "var options = '';\n";
+                    html = html + "\n if (state == \"New South Wales\")";
+                    html = html + " sellist =NSW.slice();\n";
+                    html = html + " if (state == \"Victoria\")";
+                    html = html + " sellist =VIC.slice();";
+                    html = html + " if (state == \"Western Australia\")";
+                    html = html + " sellist =WA.slice();";
+                    html = html + " if (state == \"South Australia\")";
+                    html = html + " sellist =SA.slice();";
+                    html = html + " if (state == \"Northern Territory\")";
+                    html = html + " sellist =NT.slice();";
+                    html = html + " if (state == \"Australian Capital Territory\")";
+                    html = html + " sellist =ACT.slice();";
+                    html = html + " if (state == \"Queensland\")";
+                    html = html + " sellist =QLD.slice();";
+                    html = html + " if (state == \"Tasmania\")\n";
+                    html = html + " sellist =TAS.slice();\n";
+                    html = html + "var opt = document.createElement('option');\n";
+                    html = html + "for (var i =0; i<sellist.length; i++){";
+                    html = html + "options =  options +  '<option value=\"'+sellist[i]+'\">'+sellist[i]+'</option>';}\n" ;
+                    html = html + "lgaList.name ='lganame_drop';\n";
+                    html = html + "lgaList.innerHTML =options;\n";
+                    html = html + "document.getElementById('12345').appendChild(lgaList);\n";
+                    html = html + "var lab =document.createElement('label');\n";
+                    html = html + "lab.id='lganameslabel';\n";
+                    html = html + "lab.innerHTML=\"LGA Names\";\n";
+                    html = html + "document.getElementById('12345').appendChild(lab);\n}";
 
-                    html = html + " if (state == \"Victoria\"){";
+                    /*html = html + " if (state == \"Victoria\"){";
                     //html = html + "window.alert(\"Inside NSW\");";
                     html = html + "for (var i =0; i<VIC.length; i++){";
                     html = html + "options =  options +  '<option value=\"'+VIC[i]+'\">'+VIC[i]+'</option>';}}" ;
                     //html = html + "window.alert(options);";
                     html = html + "lgaList.innerHTML=options;";
                     html = html + " pageBody.appendChild(lgaList);";
-                    html = html + "}";
+                    html = html + "}";*/
          html = html + """                  
                     
                             </script> 
@@ -213,9 +224,9 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
 
         
         html = html + "<form action='/lgaregion.html' method='post'>";
-        html = html + "   <div class='form-group'>";
-        html = html + "      <label for='age_drop'><p style= 'font-size:24px'> Select the Age group: </p></label>";
-        html = html + "      <select id='age_drop' name='age_drop'>";
+        //html = html + "   <div class='form-group'>";
+        html = html + "      <label id ='age_drop_label' for='age_drop'><p style= 'font-size:16px'>Age Group: </p></label>";
+        html = html + "      <select id='age_drop' name='age_drop' margin-left: 0 10px>";
         html = html + "         <option>" + allOption +"</option>";
         html = html + "         <option>0-9</option>";
         html = html + "         <option>10_19</option>";
@@ -227,8 +238,8 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
              html = html + "      </select>";
 
         html = html + "<form action='/lgaregion.html' method='post'>";
-        html = html + "   <div class='form-group'>";
-        html = html + "      <label for='gender_drop'><p style= 'font-size:24px'> Select the gender: </p></label>";
+        //html = html + "   <div class='form-group'>";
+        html = html + "      <label  id ='gender_drop_label'  for='gender_drop'><p style= 'font-size:16px'>Gender: </p></label>";
         html = html + "      <select id='gender_drop' name='gender_drop'>";
         html = html + "         <option>" + allOption +"</option>";
         html = html + "         <option>Male</option>";
@@ -237,7 +248,8 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
         html = html + "   </div>";
       
 
-        html = html + "   <button type='submit' class='btn btn-primary'>Submit</button>";
+        html = html + "   <button type='submit' id='drop-btn' class='btn btn-primary'>Submit</button>";
+        html = html + "   <br></br>;";
         html = html + "</form>";
         html = html + "</form>";
 
@@ -266,7 +278,7 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
 
         String gender_drop = context.formParam("gender_drop");
         String age_drop = context.formParam("age_drop");
-        String lganame_drop = context.formParam("year_drop");
+        String lganame_drop = context.formParam("lganame_drop");
         String state_drop = context.formParam("state_drop");
         String sort_drop = context.formParam("state_drop");
         String year_drop = context.formParam("year_drop");

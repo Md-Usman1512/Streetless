@@ -214,7 +214,7 @@ if (ageType == null || ageType.equals("All"))
             ageType="";
 if (name == null || name.equals("All"))
             name="";
-    query = "SELECT H.LGA_CODE, H.AGE, H.GENDER, H.YEAR, H.COUNT, R.LGA_NAME, R.STATE FROM Homeles  H, Region R WHERE H.LGA_CODE = R.LGA_CODE AND H.status = 'at-risk'  AND H.age  LIKE '%" + ageType +  "%' AND H.gender LIKE '%"+ lgaGender +"%'  AND R.STATE LIKE '%" + state + "%' AND  R.LGA_NAME LIKE '%"+ name +"%' ORDER BY H.COUNT "; 
+    query = "SELECT H.LGA_CODE, H.AGE, H.GENDER, H.YEAR, H.COUNT, R.LGA_NAME, R.STATE FROM Homeles  H, Region R WHERE H.LGA_CODE = R.LGA_CODE AND H.status = 'at-risk'  AND H.age  LIKE '%" + ageType +  "%' AND H.gender LIKE '%"+ lgaGender +"%'  AND R.STATE LIKE '%" + state + "%' AND  R.LGA_NAME LIKE '%"+ name.trim() +"%'  ORDER BY H.COUNT "; 
                       
     // Get Result
             ResultSet results = statement.executeQuery(query);

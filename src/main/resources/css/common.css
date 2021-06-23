@@ -539,11 +539,107 @@ table {
 
 #state_drop{
     position: absolute;
-    top:228px;
+    top:250px;
+    left:510px;
     width: 170px;
     height: 25px;
-    margin-left: 10px;
-    font-size: 19px;
+    margin-left: 20px;
+    font-size: 14px;
+    margin-right: 5px;
+
+  }
+  #state_drop_label{
+    position: absolute;
+    top:225px;
+    left:510px;
+    width: 80px;
+    height: 25px;
+    margin-left: 20px;
+    font-size: 14px;
+    margin-right: 5px;
+
+  } 
+
+  #age_drop_label{
+    position: absolute;
+    top:225px;
+    left:410px;
+    width: 80px;
+    height: 25px;
+    margin-left: 20px;
+    font-size: 14px;
+    margin-right: 5px;
+
+  } 
+  
+  #age_drop {
+    position: absolute;
+    top:250px;
+    left:410px;
+    width: 80px;
+    height: 25px;
+    margin-left: 20px;
+    font-size: 14px;
+    margin-right: 5px;
+
+  }
+  #gender_drop{
+    position: absolute;
+    top:250px;
+    left:310px;
+    width: 80px;
+    height: 25px;
+    margin-left: 20px;
+    font-size: 14px;
+    margin-right: 5px;
+
+  }
+
+  #gender_drop_label{
+    position: absolute;
+    top:225px;
+    left: 310px;
+    width: 80px;
+    height: 25px;
+    margin-left: 20px;
+    font-size: 14px;
+    margin-right: 5px;
+
+  } 
+
+  #drop-btn{
+    position: absolute;
+    top:285px;
+    left: 800px;
+    width: 80px;
+    height: 25px;
+    margin-left: 20px;
+    font-size: 14px;
+    margin-right: 5px;
+    align-content: center;
+
+  } 
+
+  #lganameslabel{
+    position: absolute;
+    top:225px;
+    left:720px;
+    width: 170px;
+    height: 25px;
+    margin-left: 20px;
+    font-size: 14px;
+    margin-right: 5px;
+
+  }
+
+  #lganameslist{
+    position: absolute;
+    top:250px;
+    left:720px;
+    width: 170px;
+    height: 25px;
+    margin-left: 20px;
+    font-size: 14px;
     margin-right: 5px;
 
   }
