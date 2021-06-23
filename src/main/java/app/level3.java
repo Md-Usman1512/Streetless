@@ -112,7 +112,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
         
         // Add HTML for the movies list
-        html = html + "<h1>Homeless</h1>";
+        //html = html + "<h1>Homeless</h1>";
 
         /* Add HTML for the web form
          * We are giving two ways here
@@ -125,7 +125,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
          */
        
        
-        html = html + "<form action='/level.html' method='post'>";
+       /* html = html + "<form action='/level.html' method='post'>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='state_drop'>Select the State (Dropdown):</label>";
 
@@ -231,7 +231,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
          *  from the drop down list
          * Need to be Careful!!
          *  If the form is not filled in, then the form will return null!
-        */
+        *n//
         
         String lgatype_textbox = context.formParam("lgatype_textbox");
         if (lgatype_textbox == null || lgatype_textbox == "") {
@@ -273,13 +273,13 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
         }
        
-
+*/
 
 
     
 
-
-
+html =html + """
+<div class='tableauPlaceholder' id='viz1624410968515' style='position: relative'><noscript><a href='#'><img alt='Population Demographics - 2018, at-risk, New South Wales ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ho&#47;HomelessDemographicfor20162018&#47;PopulationDemographics&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='HomelessDemographicfor20162018&#47;PopulationDemographics' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ho&#47;HomelessDemographicfor20162018&#47;PopulationDemographics&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1624410968515');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>""";
 
     
 
@@ -297,7 +297,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
      
     public String outputlevel3(String state, String age, String lga, String gender, String sort, String year) {
         String html = "";
-        html = html + "<h5> population Demographic at State\\Year\\Status</h5>";
+        //html = html + "<h5> population Demographic at State\\Year\\Status</h5>";
         
        /* html = html+  
         "<table class = 'table-sortable'>"+
@@ -350,9 +350,7 @@ html = html + "<h3> Reports and data of homeless by region </h3>";
 
         } */
 
-        html =html + """
-        <div class='tableauPlaceholder' id='viz1624409387916' style='position: relative'><noscript><a href='#'><img alt='Sheet 1 - 2018, at-risk, New South Wales ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ho&#47;HomelessDemographicfor20162018&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='HomelessDemographicfor20162018&#47;Sheet1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ho&#47;HomelessDemographicfor20162018&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1624409387916');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-        """;
+        
         /*html = html +"</table>" +
         "</ul>";*/
 
