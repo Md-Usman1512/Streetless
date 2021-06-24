@@ -84,15 +84,7 @@ public class hompopulation implements Handler {
 
         "   <a class='nav-link' href='http://localhost:7000/about'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>ABOUT</h6>"+"</a>"+
        
-        "  <a class='nav-link' href='http://localhost:7000/contact'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>CONTACT</h6>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
-
-        
-       
-
-       
-        
-        
-      
+        "  <a class='nav-link' href='http://localhost:7000/contact'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>CONTACT</h6>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+  
 "</p>"+
         "</ul>"+
         "</div>"+
@@ -101,29 +93,9 @@ public class hompopulation implements Handler {
 
         html = html + "<a href='http://localhost:7000/'>Home > </a>"+
         "<a href='#'>  Reports & Data  > At- risk of homeless</a>";
-   // Add HTML for the movies list
 
 html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>"; 
-
-
-
-
-
-
-
-        
-        // Add HTML for the movies list
-
-        /* Add HTML for the web form
-         * We are giving two ways here
-         *  - one for a text box
-         *  - one for a drop down
-         * 
-         * Whitespace is used to help us understand the HTML!
-         * 
-         * IMPORTANT! the action speicifes the URL for POST!
-         */
-       
+ 
         JDBCConnection jdbc = new JDBCConnection();
         HashMap<String, ArrayList<String>> regionMap=new HashMap<String, ArrayList<String>>();
         regionMap=jdbc.buildLGA();
@@ -209,14 +181,7 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
                     html = html + "lab.innerHTML=\"LGA Names\";\n";
                     html = html + "document.getElementById('12345').appendChild(lab);\n}";
 
-                    /*html = html + " if (state == \"Victoria\"){";
-                    //html = html + "window.alert(\"Inside NSW\");";
-                    html = html + "for (var i =0; i<VIC.length; i++){";
-                    html = html + "options =  options +  '<option value=\"'+VIC[i]+'\">'+VIC[i]+'</option>';}}" ;
-                    //html = html + "window.alert(options);";
-                    html = html + "lgaList.innerHTML=options;";
-                    html = html + " pageBody.appendChild(lgaList);";
-                    html = html + "}";*/
+          
          html = html + """                  
                     
                             </script> 
@@ -253,26 +218,18 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
         html = html + "</form>";
         html = html + "</form>";
 
-        /* Get the Form Data
-         *  from the drop down list
-         * Need to be Careful!!
-         *  If the form is not filled in, then the form will return null!
-        */
+     
         
         String lgatype_textbox = context.formParam("lgatype_textbox");
         if (lgatype_textbox == null || lgatype_textbox == "") {
-            // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html +  "<br>" +"<br>";
         } else{
-            // If NOT NULL, then lookup the movie by type!
         }
         
         String lgatype_drop = context.formParam("lgatype_drop");
         if (lgatype_drop == null) {
-            // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html + "<h6><i></i></h6>";
         } else {
-            // If NOT NULL, then lookup the movie by type!
         
         }
 
@@ -284,19 +241,15 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
         String year_drop = context.formParam("year_drop");
         
         if (lgatype_drop != null){
-            // If NULL, nothing to show, therefore we make some "no results" HTML
             html = html + "<h2><i>No results to show for dropbox LGA </i></h2>";
         } else {
-            // If NOT NULL, then lookup the movie by type!
             html = html + output(state_drop, lganame_drop, age_drop, lgatype_drop, gender_drop, sort_drop, year_drop) + "<br>" + "<br>";
             
 
         }
-        // Finish the HTML webpage
         html = html + "</body>" + "</html>";
 
-        // DO NOT MODIFY THIS
-        // Makes Javalin render the webpage
+    
         context.html(html);
     }
     public String output(String state, String name, String age, String lga, String gender, String sort, String year) {
@@ -313,7 +266,6 @@ html = html + "<h3> <br> At-Risk of homeless population </h3>" + "<br>";
                             <th>Count</th>
                             </tr></thead><tbody>
                                 """;
-        // Look up movies from JDBC
         JDBCConnection jdbc = new JDBCConnection();
         HashMap<String, ArrayList<String>> mapValues = jdbc.getLgaByage(state, name, age,lga, gender, year); 
         for (Map.Entry<String, ArrayList<String>> value : mapValues.entrySet()){  

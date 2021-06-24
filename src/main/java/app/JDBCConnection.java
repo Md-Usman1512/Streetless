@@ -27,85 +27,6 @@ public class JDBCConnection {
         System.out.println("Created JDBC Connection Object");
     }
 
-    /**
-     * Get all of the Movies in the database
-     */
-    /*public HashMap<String, ArrayList<String>> getLga() {
-        HashMap<String, ArrayList<String>> lga = new HashMap<String, ArrayList<String>>();
-
-        // Setup the variable for the JDBC connection
-        Connection connection = null;
-
-        try {
-            // Connect to JDBC data base
-            connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            // The Query
-            String query = "SELECT * FROM Homeles A INNER JOIN Region R where A.LGA_CODE=R.LGA_CODE";
-            Integer counter =0;
-            
-            // Get Result
-            ResultSet results = statement.executeQuery(query);
-            // Process all of the results
-            // The "results" variable is similar to an array
-            // We can iterate through all of the database query results
-            while (results.next()) {
-                ArrayList<String> lgalist = new ArrayList<String>();
-                // We can lookup a column of the a single record in the
-                // result using the column name
-                // BUT, we must be careful of the column type!
-                String name     = results.getString("lga_name");
-                String gender   = results.getString("gender");
-                String year     = results.getString("year");
-                String agegroup = results.getString("age");
-                String code = results.getString("lga_code");
-                String count = results.getString("count");
-                // For now we will just store the movieName and ignore the id
-                lgalist.add(code);
-                lgalist.add(name);
-                lgalist.add(agegroup);
-                lgalist.add(gender);
-                lgalist.add(year);
-                lgalist.add(count);
-                lga.put((counter++).toString(),lgalist);
-
-
-            }
-
-            // Close the statement because we are done with it
-            statement.close();
-        } catch (SQLException e) {
-            // If there is an error, lets just pr/ing the error
-            System.err.println(e.getMessage());
-        } finally {
-            // Safety code to cleanup
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }
-
-        // Finally we return all of the movies
-        return lga;
-    }*/
-
-  
-
-
-
-
-
-
-
-
 
 //level homeleseswepgae
 public HashMap<String, ArrayList<String>> getHomelessDetails(String state, String region, Float income, int age, String gender) {
@@ -173,32 +94,18 @@ public HashMap<String, ArrayList<String>> getHomelessDetails(String state, Strin
 }
 
 
-
-
-
-
-
-
-
-
-
-
-    public HashMap<String, ArrayList<String>> getLgaByage(String state, String name, String ageType, String lgaType, String lgaGender,String year) {
+public HashMap<String, ArrayList<String>> getLgaByage(String state, String name, String ageType, String lgaType, String lgaGender,String year) {
         ArrayList<String> lga = new ArrayList<String>();
         HashMap<String, ArrayList<String>> mapValues = new LinkedHashMap<String, ArrayList<String>>();
         // Setup the variable for the JDBC connection
         Connection connection = null;
-
         try {
             // Connect to JDBC data base
             connection = DriverManager.getConnection(DATABASE);
-
             // Prepare a new SQL Query & Set a timeout
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
             String query;
-            
-                 
                 query = "";
 
 if (lgaGender == null || lgaGender.equals("All"))
@@ -209,12 +116,7 @@ if (ageType == null || ageType.equals("All"))
             ageType="";
 if (name == null || name.equals("All"))
             name="";
-
-
     query = "SELECT H.LGA_CODE, H.AGE, H.GENDER, H.YEAR, H.COUNT, R.LGA_NAME, R.STATE FROM Homeles  H, Region R WHERE H.LGA_CODE = R.LGA_CODE AND H.status = 'at-risk'  AND H.age  LIKE '%" + ageType +  "%'  AND H.gender LIKE '%"+ lgaGender +"%'  AND R.STATE LIKE '%" + state + "%' AND  R.LGA_NAME LIKE '%"+ name.trim() +"%'  ORDER BY H.COUNT "; 
-                      
-
-
     // Get Result
             ResultSet results = statement.executeQuery(query);
             Integer counter=0;
@@ -234,7 +136,6 @@ if (name == null || name.equals("All"))
                 values.add(gender);
                 values.add(count);
                 values.add(code);
-                //Using counter variable as key to store each row converted to array in the values of the hashmap
                 mapValues.put((counter++).toString(), values);
             }
             // Close the statement because we are done with it
