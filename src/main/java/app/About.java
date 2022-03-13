@@ -44,32 +44,26 @@ public class About implements Handler {
      "<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>" +
        "<i class='fas fa-align-right text-light'>" + "</i>"+
      "</button>"+
-     "<div class='collapse navbar-collapse' id='navbarNav'>"+
+       "<div class='collapse navbar-collapse' id='navbarNav'>"+
        "<div class='mr-auto'>" + "</div>"+
        "<ul class='navbar-nav'>"+
        " <li class='nav-item active'>"+
-       "   <a class='nav-link' href='#'>"+ "<h6></h6>"+
-       "     <span class='sr-only'> </span>"+
-       "   </a>"+
+       " <a class='nav-link' href='#'>"+ "<h6></h6>"+
+       " <span class='sr-only'> </span>"+
+       " </a>"+
        " </li>"+
        "<p class='nav-item'>"+
-
-       "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6></h6>"+"</a>"+
-
-       "   <a class='nav-link' href='http://localhost:7000'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>HOME</h6>"+"</a>"+
-
+       "<a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6></h6>"+"</a>"+
+       "<a class='nav-link' href='http://localhost:7000'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>HOME</h6>"+"</a>"+
        "<li class='nav-item dropdown'>"+
        "<div class='dropdown'>"+
        "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6>REPORTS & DATA</h6></a>"+
-
        "<div class='dropdown-content'>"+
-       "      <a href='http://localhost:7000/lgaregion.html#'>Detailed reports</a>"+
-       "      <a href='http://localhost:7000/level.html'>In-depth reports</a>"+
-       "    </div>"+ "  </div>"+  "</li>"+
-      
-        "   <a class='nav-link' href='http://localhost:7000/about'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>ABOUT</h6>"+"</a>"+
-       
-        "  <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>CONTACT</h6>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
+       "<a href='http://localhost:7000/lgaregion.html#'>Detailed reports</a>"+
+       "<a href='http://localhost:7000/level.html'>In-depth reports</a>"+
+       "</div>"+ "  </div>"+  "</li>"+
+       "<a class='nav-link' href='http://localhost:7000/about'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>ABOUT</h6>"+"</a>"+
+       "<a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>CONTACT</h6>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
 "</p>"+
         "</ul>"+
         "</div>"+
