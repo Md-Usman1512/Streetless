@@ -8,13 +8,7 @@ import java.util.Set;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
-/**
- * Example Index HTML class using Javalin
- * <p>
- * Generate a static HTML page using Javalin
- * by writing the raw HTML into a Java String object
- 
- */
+
 public class level3 implements Handler {
 
     // URL of this page relative to http://localhost:7000/
@@ -59,40 +53,29 @@ public class level3 implements Handler {
        "<div class='mr-auto'>" + "</div>"+
        "<ul class='navbar-nav'>"+
        " <li class='nav-item active'>"+
-       "   <a class='nav-link' href='#'>"+ "<h6></h6>"+
-       "     <span class='sr-only'> </span>"+
-       "   </a>"+
-       " </li>"+
+       "<a class='nav-link' href='#'>"+ "<h6></h6>"+
+       "<span class='sr-only'> </span>"+
+       "</a>"+
+       "</li>"+
        "<p class='nav-item'>"+
 
-       "   <a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6></h6>"+"</a>"+
-
-       "   <a class='nav-link' href='http://localhost:7000/'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>HOME</h6>"+"</a>"+
-
+       "<a class='nav-link' href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6></h6>"+"</a>"+
+      "<a class='nav-link' href='http://localhost:7000/'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>HOME</h6>"+"</a>"+
        "<li class='nav-item dropdown'>"+
        "<div class='dropdown'>"+
        "<a class='nav-link'   href='#'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6>REPORTS & DATA</h6></a>"+
 
        "<div class='dropdown-content'>"+
-       "      <a href='#'>Detailed reports</a>"+
-       "      <a href='http://localhost:7000/level.html'>In-depth reports</a>"+
-       "    </div>"+
-       "  </div>"+ 
+       "<a href='#'>Detailed reports</a>"+
+       "<a href='http://localhost:7000/level.html'>In-depth reports</a>"+
+       "</div>"+
+       "</div>"+ 
        "</li>"+
-      
-
         "   <a class='nav-link' href='http://localhost:7000/about'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>ABOUT</h6>"+"</a>"+
-       
         "  <a class='nav-link' href='http://localhost:7000/contact'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>CONTACT</h6>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
-
-        
-       
-
-       
-        
-        
+   
       
-"</p>"+
+ "</p>"+
         "</ul>"+
         "</div>"+
         "</nav>"+
@@ -100,20 +83,8 @@ public class level3 implements Handler {
 
         html = html + "<a href='http://localhost:7000/'>Home > </a>"+
         "<a href='#'>  Reports & Data </a>";
-   // Add HTML for the movies list
 
-html = html + "<h3> Reports and data of homeless by region </h3>"; 
-
-
-
-
-
-
-
-     
-
-    
-
+html = html + "<h3> Reports and data of homeless by region </h3>";     
 html =html + """
 <div class='tableauPlaceholder' id='viz1624443645091' style='position: relative'><noscript><a href='#'><img alt='Population Demographics - 2018, at-risk, New South Wales ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StatePopulationDemographicfor20162018&#47;PopulationDemographics&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StatePopulationDemographicfor20162018&#47;PopulationDemographics' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StatePopulationDemographicfor20162018&#47;PopulationDemographics&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1624443645091');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 <div class='tableauPlaceholder' id='viz1624420997731' style='position: relative'><noscript><a href='#'><img alt='State Poulation Demographics - 2016 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StatePopulationDemographicfor20162018&#47;StatePoulationDemographics&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StatePopulationDemographicfor20162018&#47;StatePoulationDemographics' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StatePopulationDemographicfor20162018&#47;StatePoulationDemographics&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1624420997731');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
@@ -128,79 +99,11 @@ html =html + """
         context.html(html);
     }
 
-  
-
-    
-     
     public String outputlevel3(String state, String age, String lga, String gender, String sort, String year) {
         String html = "";
-        //html = html + "<h5> population Demographic at State\\Year\\Status</h5>";
-        
-       /* html = html+  
-        "<table class = 'table-sortable'>"+
-        "<thead>" + "<tr>" +
-  
-  
-   "<th>" + "Local Government Area" + "</th>"+
-   "<th>" + "Median income" + "</th>"+
-   "<th>" + "Median Age" + "</th>"+
-  "<th>" + "Homeless in the state" + "</th>" + 
-  "<th>" + " Median rent" + "</th>"+
-  
-  "</tr>" + "</thead>";
-
-  System.out.println("hello world");
-        // Look up movies from JDBC
-        JDBCConnection jdbc = new JDBCConnection();
-        HashMap<String, ArrayList<String>> mapValues = jdbc.getHomelessDetails(state, null,  0.0f, 0, gender);
-        
-        // Add HTML for the movies list
-        html = html + "<ul>";
-        
-        Set<String> keys = mapValues.keySet();
-           /* for (int i =0; i<10 && i< keys.size();i++){
-           // }
-        //for (Map.Entry<String, ArrayList<String>> value : mapValues.entrySet()){
-
-             ArrayList<String> arrValues= mapValues.get(i+"");
-             System.out.println(arrValues);
-             String code = arrValues.get(0);
-             String name  =arrValues.get(1);
-             String weeklyincome  = arrValues.get(2);
-             String repay = arrValues.get(3);
-             String rent =arrValues.get(4);
-             String percent = arrValues.get(5);
- 
-
-
-          // html = html + "<tbody>" + "<tr>" + "<td>" + code + "</td>";
-            html = html + "<td>"  +  name + "</td>";
-            html = html + "<td>"  + weeklyincome + "</td>";
-            html = html + "<td>" + "39" + "</td>";
-
-            html = html + "<td>"  + repay + "</td>";
-            html = html + "<td>"  + rent + "</td>";
-            html = html +   "</tr>"+ "<tbody>" + " <script src = './tablesort.js' >" + "</script>";
-
-                
-        
-
-        } */
-
-        
-        /*html = html +"</table>" +
-        "</ul>";*/
-
-
-  
-        
+       
         return html;
   }
   
   }
-  
-  
-  
-  
-  
   
