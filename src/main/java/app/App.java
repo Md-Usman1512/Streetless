@@ -6,7 +6,6 @@ import io.javalin.core.util.RouteOverviewPlugin;
 
 /**
  * Main Application Class.
- * <p>
  * Running this class as regular java application will start the 
  * Javalin HTTP Server and our web application.
  *
@@ -38,9 +37,8 @@ public class App {
     }
 
     public static void configureRoutes(Javalin app) {
-        // Note in this example we must add Movies Type as a GET and a POST!
         
-        // ADD ALL OF YOUR WEBPAGES HERE
+        // ADD ALL WEBPAGES HERE
         app.get(Index.URL, new Index());
         app.get(contact.URL, new contact());      
        
