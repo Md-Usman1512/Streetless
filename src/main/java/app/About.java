@@ -5,15 +5,7 @@ import java.util.ArrayList;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
-/**
- * Example Index HTML class using Javalin
- * <p>
- * Generate a static HTML page using Javalin
- * by writing the raw HTML into a Java String object
- *
- * @author Timothy Wiley, 2021. email: timothy.wiley@rmit.edu.au
- * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
- */
+ 
 public class About implements Handler {
 
     // URL of this page relative to http://localhost:700/
@@ -41,7 +33,7 @@ public class About implements Handler {
           "<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>";
 
 
-          // Add the body
+    // Add the body
    html = html + "<body>";
 
    html = html + "<div class='container-fluid p-0'>"+
@@ -73,22 +65,11 @@ public class About implements Handler {
        "<div class='dropdown-content'>"+
        "      <a href='http://localhost:7000/lgaregion.html#'>Detailed reports</a>"+
        "      <a href='http://localhost:7000/level.html'>In-depth reports</a>"+
-       "    </div>"+
-       "  </div>"+
-       "</li>"+
+       "    </div>"+ "  </div>"+  "</li>"+
       
-
         "   <a class='nav-link' href='http://localhost:7000/about'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>ABOUT</h6>"+"</a>"+
        
         "  <a class='nav-link' href='#'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ "<h6>CONTACT</h6>"+"</a>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"+
-
-        
-       
-
-       
-        
-        
-        
 "</p>"+
         "</ul>"+
         "</div>"+
