@@ -236,14 +236,6 @@ if (name == null || name.equals("All"))
         // Finally we return all of the retreived values
         return arrResultset;
     }
-            
-
-
-
-
-
-
-
-
+    
 }
 
